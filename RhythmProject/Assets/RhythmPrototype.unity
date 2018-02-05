@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 316349594}
   - component: {fileID: 316349593}
   - component: {fileID: 316349592}
+  - component: {fileID: 316349595}
   m_Layer: 0
   m_Name: New Sprite
   m_TagString: Untagged
@@ -198,6 +199,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &316349595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 316349591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cef12340592d46ed9a0e482f53f71a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  note: {fileID: 1885701615060000, guid: 39d484e953ccc483ab467137103ffa30, type: 2}
 --- !u!1 &393843736
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,6 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 393843738}
   - component: {fileID: 393843737}
+  - component: {fileID: 393843739}
   m_Layer: 0
   m_Name: CircleB
   m_TagString: B
@@ -265,12 +279,23 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 393843736}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.95, y: -3.47, z: 0}
+  m_LocalPosition: {x: 0.5, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &393843739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 393843736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcb277d8d5a00438cbb29bc5329d02d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &508663646
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,8 +307,6 @@ GameObject:
   - component: {fileID: 508663649}
   - component: {fileID: 508663648}
   - component: {fileID: 508663647}
-  - component: {fileID: 508663653}
-  - component: {fileID: 508663651}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -354,29 +377,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &508663651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 508663646}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc73a5e87577747858bb497722ec79a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &508663653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 508663646}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cef12340592d46ed9a0e482f53f71a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  note: {fileID: 1885701615060000, guid: 39d484e953ccc483ab467137103ffa30, type: 2}
 --- !u!1 &1049919939
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,6 +386,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1049919941}
   - component: {fileID: 1049919940}
+  - component: {fileID: 1049919942}
   m_Layer: 0
   m_Name: CircleC
   m_TagString: C
@@ -444,12 +445,23 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1049919939}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.51, y: -3.52, z: 0}
+  m_LocalPosition: {x: -1.5, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1049919942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1049919939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b1e20141422341b4bc420229cadcd7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1158022172
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +471,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1158022175}
   - component: {fileID: 1158022174}
+  - component: {fileID: 1158022173}
   m_Layer: 0
   m_Name: CircleV
   m_TagString: V
@@ -466,6 +479,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1158022173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1158022172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d702d3ca8f6347d2acd62d2792bf244, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &1158022174
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -517,7 +541,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1158022172}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.87999994, y: -3.54, z: 0}
+  m_LocalPosition: {x: -0.5, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -532,6 +556,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1357196095}
   - component: {fileID: 1357196094}
+  - component: {fileID: 1357196096}
   m_Layer: 0
   m_Name: CircleN
   m_TagString: N
@@ -590,9 +615,20 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1357196093}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.58, y: -3.5, z: 0}
+  m_LocalPosition: {x: 1.5, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1357196096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1357196093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5e6680f9e8243e0847893422c47a09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

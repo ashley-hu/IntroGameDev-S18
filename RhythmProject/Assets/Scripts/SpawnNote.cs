@@ -18,7 +18,6 @@ public class SpawnNote : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		timer--;
-		//Debug.Log (timer);
 		if (timer <= 0f && appeared == false) {
 			GameObject newNote = Instantiate (note, new Vector3(0,5,0), transform.rotation);
 			arrayOfNotes.Add (newNote);
