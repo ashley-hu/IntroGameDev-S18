@@ -8,18 +8,26 @@ public class SpawnNote : MonoBehaviour {
 	private float timer;
 	private bool appeared;
 	private List<GameObject> arrayOfNotes = new List<GameObject>();
+	private float[] arrayOfColumn = new float[4];
+	private int x;
 
 	// Use this for initialization
 	void Start () {
-		timer = 50.0f;
+		timer = 60.0f;
 		appeared = false;
+
+		arrayOfColumn [0] = -1.5f;
+		arrayOfColumn [1] = -0.5f;
+		arrayOfColumn [2] = 0.5f;
+		arrayOfColumn [3] = 1.5f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		timer--;
 		if (timer <= 0f && appeared == false) {
-			GameObject newNote = Instantiate (note, new Vector3(0,5,0), transform.rotation);
+			x = Random.Range (0, 4);
+			GameObject newNote = Instantiate (note, new Vector3(arrayOfColumn[x],5,0), transform.rotation);
 			arrayOfNotes.Add (newNote);
 			appeared = true;
 			timer = 50.0f;
@@ -28,9 +36,14 @@ public class SpawnNote : MonoBehaviour {
 		}
 
 		if (arrayOfNotes.Count > 0) {
-			foreach(GameObject item in arrayOfNotes)
-			{
-				item.transform.position -= transform.up * Time.deltaTime * 1;
+			for(int i=arrayOfNotes.Count-1; i>=0; i--){
+				//Debug.Log (arrayOfNotes.Count);
+				//Debug.Log (arrayOfNotes [i]);
+				arrayOfNotes[i].transform.position -= arrayOfNotes[i].transform.up * Time.deltaTime * 5;
+				if (arrayOfNotes[i].transform.position.y < -4.5f) {
+					Destroy (arrayOfNotes[i]);
+					arrayOfNotes.RemoveAt (i);
+				}
 			}
 		}
 	}

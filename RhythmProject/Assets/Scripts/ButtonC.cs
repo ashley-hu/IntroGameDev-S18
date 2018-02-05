@@ -18,6 +18,9 @@ public class ButtonC : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.C)) {
 			buttonC.GetComponent<SpriteRenderer> ().color = Color.red;
 		}
+		if (Input.GetKeyUp (KeyCode.C)) {
+			buttonC.GetComponent<SpriteRenderer> ().color = Color.white;
+		}
 	}
 
 	void onCollisionEnter(){
