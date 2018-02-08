@@ -8,6 +8,7 @@ TagManager:
   - V
   - B
   - N
+  - Note
   layers:
   - Default
   - TransparentFX
