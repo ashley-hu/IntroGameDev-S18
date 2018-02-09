@@ -6,8 +6,6 @@ using System.IO;
 public class SpawnNote : MonoBehaviour {
 	
 	public GameObject note;
-	private float timer;
-	private bool appeared;
 	private List<GameObject> arrayOfNotes = new List<GameObject>();
 	private float[] arrayOfColumn = new float[4];
 	private int x;
@@ -17,6 +15,7 @@ public class SpawnNote : MonoBehaviour {
 	private string textSongData;
 	public AudioSource songSource;
 	string[] lines;
+	private float speed;
 
 	void Awake() {
 		songSource = GetComponent<AudioSource>();
@@ -39,12 +38,21 @@ public class SpawnNote : MonoBehaviour {
 		ParseSongFile (textSongData);
 
 		songSource.clip = songOne;
-		songSource.Play ();
-		Debug.Log (songSource);
+
+		songSource.PlayDelayed (3.8f);
+		speed = (5.5f + 3.5f) / 4.0f;
 	}
 
-	void ParseSongFile(string x){
-		lines = x.Split('\n');
+	void ParseSongFile(string textFile){
+		lines = textFile.Split('\n');
+		for (int i = 0; i < lines.Length; i++) {
+			if (lines [i].Contains ("1")) {
+				Debug.Log ("Contains 1");
+				x = Random.Range (0, 4);
+				GameObject newNote = Instantiate (note, new Vector3 (arrayOfColumn [x], 5.5f, 0), transform.rotation);
+				arrayOfNotes.Add (newNote);
+			}
+		}
 	}
 	
 	// Update is called once per frame
@@ -72,10 +80,32 @@ public class SpawnNote : MonoBehaviour {
 //				}
 //			}
 //		}
-
-		//if(songSource.timeSamples)
-		for(int i=0;i < lines.Length; i++){
+		if (arrayOfNotes.Count > 0) {
+			//if (songSource.time % 4 == 0) {
+				arrayOfNotes [arrayOfNotes.Count - 1].transform.position -= arrayOfNotes [arrayOfNotes.Count - 1].transform.up * Time.deltaTime * speed;
+				if (arrayOfNotes [arrayOfNotes.Count - 1].transform.position.y < -4.5f) {
+					Destroy (arrayOfNotes [arrayOfNotes.Count - 1]);
+					arrayOfNotes.RemoveAt (arrayOfNotes.Count - 1);
+					//Debug.Log ("Miss");
+				}
+			//}
 		}
+
+
+//		if (arrayOfNotes.Count > 0) {
+//			for (int i = arrayOfNotes.Count - 1; i >= 0; i--) {
+//				//Debug.Log (arrayOfNotes.Count);
+//				//Debug.Log (arrayOfNotes [i]);
+//				if (songSource.time % 4 == 0) {
+//					arrayOfNotes [i].transform.position -= arrayOfNotes [i].transform.up * Time.deltaTime * speed;
+//					if (arrayOfNotes [i].transform.position.y < -4.5f) {
+//						Destroy (arrayOfNotes [i]);
+//						arrayOfNotes.RemoveAt (i);
+//						//Debug.Log ("Miss");
+//					}
+//				}
+//			}
+//		}
 
 	}
 }
