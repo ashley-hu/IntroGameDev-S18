@@ -22,7 +22,7 @@ public class SpawnNote : MonoBehaviour {
 	void Awake() {
 		songSource = GetComponent<AudioSource>();
 		songData = Resources.Load ("sampletext") as TextAsset;
-		songOne = Resources.Load<AudioClip>("sample");
+		songOne = Resources.Load<AudioClip>("demo");
 	}
 
 	// Use this for initialization
@@ -36,8 +36,8 @@ public class SpawnNote : MonoBehaviour {
 
 		songSource.clip = songOne;
 
-		songSource.PlayDelayed (3.8f);
-		speed = (5.5f + 3.5f) / 4.0f;
+		songSource.PlayDelayed (1.8f);
+		speed = (5.5f + 3.5f + songSource.timeSamples) / 2.0f;
 		rid = false;
 	}
 
@@ -59,19 +59,20 @@ public class SpawnNote : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (arrayOfMeasures.Count > 0) {
-			List<GameObject> result = arrayOfMeasures [arrayOfMeasures.Count - 1];
-			for (int i = 0; i < result.Count; i++){
-				result[i].transform.position -= result [i].transform.up * Time.deltaTime * speed;
-				if (result [i].transform.position.y < -4.5f) {
-					Destroy (result[i]);
-					rid = true;
-
-				}
-			}
-			if (rid) {
-				arrayOfMeasures.Remove (result);
-				rid = false;
-			}
+			
+//			List<GameObject> result = arrayOfMeasures [arrayOfMeasures.Count - 1];
+//			for (int i = 0; i < result.Count; i++){
+//				result[i].transform.position -= result [i].transform.up * Time.deltaTime * speed;
+//				if (result [i].transform.position.y < -4.5f) {
+//					Destroy (result[i]);
+//					rid = true;
+//
+//				}
+//			}
+//			if (rid) {
+//				arrayOfMeasures.Remove (result);
+//				rid = false;
+//			}
 		}
 	}
 }
