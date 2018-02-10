@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/SelectMode.unity
+    guid: 584ecb76ccaaa49d3ac2e5ca1ed4264d
+  - enabled: 1
+    path: Assets/RhythmPrototype.unity
+    guid: 31eee277791314789ba9f510a0c858db

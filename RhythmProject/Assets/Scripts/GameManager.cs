@@ -35,8 +35,8 @@ public class GameManager : MonoBehaviour {
 	public void LoadSongOne(){
 		if (SceneManager.GetActiveScene ().buildIndex == 0) {
 
-			SceneManager.LoadScene (""); 
-			audioSource = Resources.Load<AudioClip>("sample");
+			SceneManager.LoadScene ("RhythmPrototype"); 
+			//audioSource = Resources.Load<AudioClip>("sample");
 			//load text file 
 		}
 	}
