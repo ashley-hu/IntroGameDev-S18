@@ -19,20 +19,30 @@ public class ButtonC : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.C)) {
 			buttonC.GetComponent<SpriteRenderer> ().color = new Color(1.0F, 0, 0, 0.8F);
-			if (hit) {
-				Debug.Log ("Hit");
-				hit = false;
-			}
+			hit = true;
 		}
 		if (Input.GetKeyUp (KeyCode.C)) {
 			buttonC.GetComponent<SpriteRenderer> ().color = Color.red;
+			hit = false;
 		}
 	}
 
 	void OnCollisionStay2D(Collision2D coll) {
 		if (coll.gameObject.tag == "Note") {
-			if (coll.gameObject.transform.position.y < -3.5) {
-				hit = true;
+			//perfect
+			if (coll.gameObject.transform.position.y == -3.5f && hit) {
+				Debug.Log ("Perfect");
+				Destroy (coll.gameObject);
+			}
+			//great
+			else if ((coll.gameObject.transform.position.y > -3.5f && coll.gameObject.transform.position.y < -3.3f) && hit) {
+				Debug.Log ("Great");
+				Destroy (coll.gameObject);
+			} 
+			//bad
+			else if ((coll.gameObject.transform.position.y > -3.3f && coll.gameObject.transform.position.y < -3.0f) && hit) {
+				Debug.Log ("Bad");
+				Destroy (coll.gameObject);
 			}
 		}
 		

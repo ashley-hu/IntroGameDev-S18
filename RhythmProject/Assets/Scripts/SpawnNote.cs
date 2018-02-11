@@ -71,11 +71,13 @@ public class SpawnNote : MonoBehaviour {
 		if (arrayOfMeasures.Count > 0) {
 			List<GameObject> result = arrayOfMeasures [arrayOfMeasures.Count - 1];
 			for (int i = 0; i < result.Count; i++){
-				result[i].transform.position -= result [i].transform.up * Time.deltaTime * speed;
-				if (result [i].transform.position.y < -4.5f) {
-					Destroy (result[i]);
-					rid = true;
+				if (result [i].gameObject != null) {
+					result [i].transform.position -= result [i].transform.up * Time.deltaTime * speed;
+					if (result [i].transform.position.y < -4.5f) {
+						Destroy (result [i]);
+						rid = true;
 
+					}
 				}
 			}
 			if (rid) {
