@@ -18,14 +18,14 @@ public class ButtonV : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.V)) {
-			buttonV.GetComponent<SpriteRenderer> ().color = Color.blue;
+			buttonV.GetComponent<SpriteRenderer> ().color = new Color(0, 0, 1.0F, 0.8F);
 			if (hit) {
 				Debug.Log ("Hit");
 				hit = false;
 			}
 		} 
 		if (Input.GetKeyUp (KeyCode.V)) {
-			buttonV.GetComponent<SpriteRenderer> ().color = Color.white;
+			buttonV.GetComponent<SpriteRenderer> ().color = Color.blue;
 		}
 	}
 
