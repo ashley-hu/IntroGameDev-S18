@@ -16,8 +16,15 @@ public class SpawnNote : MonoBehaviour {
 	public AudioSource songSource;
 	string[] lines;
 	string[] rows;
-	private float speed;
+	public static float speed;
 	private bool rid;
+
+	private float bpm = 120;
+	private float timeDurationOfBeat;
+	private float currentBeat;
+	private float songPosition;
+	private double initTime;
+	private bool hasSpawned = false;
 
 	void Awake() {
 		songSource = GetComponent<AudioSource>();
@@ -36,10 +43,12 @@ public class SpawnNote : MonoBehaviour {
 
 		songSource.clip = songOne;
 
-		double initTime = AudioSettings.dspTime;
+		initTime = AudioSettings.dspTime;
 		songSource.PlayScheduled(initTime + 4.0f);
+
 		speed = (5.5f + 3.5f + songSource.timeSamples) / 4.0f;
-		rid = false;
+		timeDurationOfBeat = bpm/60;
+		currentBeat = 0;
 	}
 
 	void ParseSongFile(string textFile){
@@ -50,6 +59,7 @@ public class SpawnNote : MonoBehaviour {
 			for(int a = 0; a < rows.Length; a++){
 				if (rows [a].Contains ("1")) {
 					GameObject newNote = Instantiate (note, new Vector3 (arrayOfColumn [a], 5.5f, 0), transform.rotation);
+					newNote.GetComponent<Note> ().move = false;
 					if (a == 0) {
 						newNote.GetComponent<SpriteRenderer>().color = Color.red;
 					} else if (a == 1) {
@@ -68,22 +78,24 @@ public class SpawnNote : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (arrayOfMeasures.Count > 0) {
-			List<GameObject> result = arrayOfMeasures [arrayOfMeasures.Count - 1];
-			for (int i = 0; i < result.Count; i++){
-				if (result [i].gameObject != null) {
-					result [i].transform.position -= result [i].transform.up * Time.deltaTime * speed;
-					if (result [i].transform.position.y < -4.5f) {
-						Destroy (result [i]);
-						rid = true;
-
+		songPosition = (float)(AudioSettings.dspTime - initTime);
+		//Debug.Log ("SongPosition: " + songPosition + "CurrentBeat and Time: " + currentBeat + timeDurationOfBeat);
+		if (songPosition > currentBeat + timeDurationOfBeat) {
+			if (arrayOfMeasures.Count > 0) {
+				List<GameObject> result = arrayOfMeasures [arrayOfMeasures.Count - 1];
+				for (int i = 0; i < result.Count; i++){
+					if (result [i].gameObject != null) {
+						result [i].GetComponent<Note>().move = true;
 					}
+					//Debug.Log("Spawn");
 				}
+				hasSpawned = true;
 			}
-			if (rid) {
-				arrayOfMeasures.Remove (result);
-				rid = false;
-			}
+			currentBeat += timeDurationOfBeat;
+		}
+		if (hasSpawned) {
+			arrayOfMeasures.Remove (arrayOfMeasures [arrayOfMeasures.Count - 1]);
+			hasSpawned = false;
 		}
 	}
 }

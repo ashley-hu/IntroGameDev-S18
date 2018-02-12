@@ -12,7 +12,7 @@ public class ButtonV : MonoBehaviour {
 		if (buttonV == null) {
 			buttonV = GameObject.FindWithTag ("V");
 		}
-		hit = true;
+		hit = false;
 	}
 	
 	// Update is called once per frame
