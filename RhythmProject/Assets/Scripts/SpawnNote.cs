@@ -79,7 +79,7 @@ public class SpawnNote : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		songPosition = (float)(AudioSettings.dspTime - initTime + 4.0f);
-		Debug.Log ("SongPosition: " + songPosition + "CurrentBeat and Time: " + (currentBeat + timeDurationOfBeat));
+		//Debug.Log ("SongPosition: " + songPosition + "CurrentBeat and Time: " + (currentBeat + timeDurationOfBeat));
 		if (songPosition > currentBeat + timeDurationOfBeat) {
 			if (arrayOfMeasures.Count > 0) {
 				List<GameObject> result = arrayOfMeasures [arrayOfMeasures.Count - 1];
