@@ -46,9 +46,9 @@ public class SpawnNote : MonoBehaviour {
 		initTime = AudioSettings.dspTime;
 		songSource.PlayScheduled(initTime + 4.0f);
 
-		speed = (5.5f + 3.5f + songSource.timeSamples) / 4.0f;
+		speed = (5.5f + 3.5f) / 4.0f;
 		timeDurationOfBeat = bpm/60;
-		currentBeat = 0;
+		currentBeat = 2;
 	}
 
 	void ParseSongFile(string textFile){
@@ -78,8 +78,8 @@ public class SpawnNote : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		songPosition = (float)(AudioSettings.dspTime - initTime);
-		//Debug.Log ("SongPosition: " + songPosition + "CurrentBeat and Time: " + currentBeat + timeDurationOfBeat);
+		songPosition = (float)(AudioSettings.dspTime - initTime + 4.0f);
+		Debug.Log ("SongPosition: " + songPosition + "CurrentBeat and Time: " + (currentBeat + timeDurationOfBeat));
 		if (songPosition > currentBeat + timeDurationOfBeat) {
 			if (arrayOfMeasures.Count > 0) {
 				List<GameObject> result = arrayOfMeasures [arrayOfMeasures.Count - 1];

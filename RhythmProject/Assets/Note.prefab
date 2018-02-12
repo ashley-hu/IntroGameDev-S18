@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4575894709937870}
   - component: {fileID: 212452674830160444}
   - component: {fileID: 58494453489966432}
-  - component: {fileID: 114143472075875252}
+  - component: {fileID: 114428479578536170}
   m_Layer: 0
   m_Name: Note
   m_TagString: Note
@@ -57,7 +57,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &114143472075875252
+--- !u!114 &114428479578536170
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -65,11 +65,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1885701615060000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 872ef95e992704b839ee2260750a4990, type: 3}
+  m_Script: {fileID: 11500000, guid: 24a94b95c8f944a2b940a9c23d866725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wholeNote: 0
-  halfNote: 0
+  move: 0
 --- !u!212 &212452674830160444
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -105,7 +104,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3237edd54813240739ac2a0ee9a16a0e, type: 3}
-  m_Color: {r: 0.9485294, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
