@@ -26,6 +26,8 @@ public class SpawnNote : MonoBehaviour {
 	private double initTime;
 	private bool hasSpawned = false;
 
+	private float spawnHeight = 5.5f;
+
 	void Awake() {
 		songSource = GetComponent<AudioSource>();
 		songData = Resources.Load ("sampletext") as TextAsset;
@@ -34,10 +36,10 @@ public class SpawnNote : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		arrayOfColumn [0] = -1.5f;
-		arrayOfColumn [1] = -0.5f;
-		arrayOfColumn [2] = 0.5f;
-		arrayOfColumn [3] = 1.5f;
+		arrayOfColumn [0] = -1.65f;
+		arrayOfColumn [1] = -0.55f;
+		arrayOfColumn [2] = 0.55f;
+		arrayOfColumn [3] = 1.65f;
 		textSongData = songData.text;
 		ParseSongFile (textSongData);
 
@@ -46,7 +48,7 @@ public class SpawnNote : MonoBehaviour {
 		initTime = AudioSettings.dspTime;
 		songSource.PlayScheduled(initTime + 4.0f);
 
-		speed = (5.5f + 3.5f) / 4.0f;
+		speed = (spawnHeight + 3.5f) / 4.0f;
 		timeDurationOfBeat = bpm/60;
 		currentBeat = 2;
 	}
