@@ -29,22 +29,31 @@ public class ButtonB : MonoBehaviour {
 
 	void OnCollisionStay2D(Collision2D coll) {
 		if (coll.gameObject.tag == "Note") {
+			//bad above
+			if ((coll.gameObject.transform.position.y >= -3.25f && coll.gameObject.transform.position.y < -2.5f) && hit) {
+				Debug.Log ("Bad");
+				Destroy (coll.gameObject);
+			}
+			//great above
+			else if ((coll.gameObject.transform.position.y >= -3.45f && coll.gameObject.transform.position.y < -3.25f) && hit) {
+				Debug.Log ("Great");
+				Destroy (coll.gameObject);
+			}
 			//perfect
-			if (coll.gameObject.transform.position.y == -3.5f && hit) {
+			else if (coll.gameObject.transform.position.y >= -3.55f && coll.gameObject.transform.position.y < -3.45f && hit) {
 				Debug.Log ("Perfect");
 				Destroy (coll.gameObject);
 			}
-			//great
-			else if ((coll.gameObject.transform.position.y > -3.5f && coll.gameObject.transform.position.y < -3.3f) && hit) {
+			//great below
+			else if ((coll.gameObject.transform.position.y >= -3.75f && coll.gameObject.transform.position.y < -3.55f) && hit) {
 				Debug.Log ("Great");
 				Destroy (coll.gameObject);
 			} 
-			//bad
-			else if ((coll.gameObject.transform.position.y > -3.3f && coll.gameObject.transform.position.y < -3.0f) && hit) {
+			//bad below
+			else if ((coll.gameObject.transform.position.y > -4.5f && coll.gameObject.transform.position.y < -3.75f) && hit) {
 				Debug.Log ("Bad");
 				Destroy (coll.gameObject);
 			}
 		}
-
 	}
 }
