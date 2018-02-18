@@ -31,19 +31,4 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 		
 	}
-
-	public void LoadSongOne(){
-		if (SceneManager.GetActiveScene ().buildIndex == 0) {
-
-			SceneManager.LoadScene ("RhythmPrototype"); 
-			//audioSource = Resources.Load<AudioClip>("sample");
-			//load text file 
-		}
-	}
-
-	public void LoadSongTwo(){
-		if (SceneManager.GetActiveScene ().buildIndex == 0) {
-			
-		}
-	}
 }

@@ -16,14 +16,9 @@ public class Note : MonoBehaviour {
 		if (move) {
 			transform.position -= transform.up * Time.deltaTime * SpawnNote.speed;
 			if (transform.position.y < -4.5f) {
+				Debug.Log ("Miss");
 				Destroy (gameObject);
 			}
 		}
 	}
-
-//	void FixedUpdate(){
-//		//Debug.Log (SpawnNote.speed);
-//		transform.position += Vector3.up * Time.deltaTime * SpawnNote.speed;
-//		//Debug.Log ();
-//	}
 }

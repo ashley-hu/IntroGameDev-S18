@@ -28,10 +28,26 @@ public class SpawnNote : MonoBehaviour {
 
 	private float spawnHeight = 5.5f;
 
+	//create static variable
+	// set value to 1 , 2, etc. 
+	// update static value in song selection
+	// if 1, load this, 
+	// if 2, load that
+
+	public static int fileNumber;
+
 	void Awake() {
 		songSource = GetComponent<AudioSource>();
-		songData = Resources.Load ("sampletext") as TextAsset;
-		songOne = Resources.Load<AudioClip>("demo");
+
+		if (fileNumber == 1) {
+			songData = Resources.Load ("sampletext") as TextAsset;
+			songOne = Resources.Load<AudioClip> ("demo");
+		}
+		if (fileNumber == 2) {
+			Debug.Log ("Load 2nd files");
+		}
+
+		//check if u can load data from the scene 
 	}
 
 	// Use this for initialization
@@ -40,17 +56,20 @@ public class SpawnNote : MonoBehaviour {
 		arrayOfColumn [1] = -0.55f;
 		arrayOfColumn [2] = 0.55f;
 		arrayOfColumn [3] = 1.65f;
-		textSongData = songData.text;
-		ParseSongFile (textSongData);
 
-		songSource.clip = songOne;
+		if (songData && songOne != null) {
+			textSongData = songData.text;
+			ParseSongFile (textSongData);
 
-		initTime = AudioSettings.dspTime;
-		songSource.PlayScheduled(initTime + 4.0f);
+			songSource.clip = songOne;
 
-		speed = (spawnHeight + 3.5f) / 4.0f;
-		timeDurationOfBeat = bpm/60;
-		currentBeat = 2;
+			initTime = AudioSettings.dspTime;
+			songSource.PlayScheduled (initTime + 4.0f);
+
+			speed = (spawnHeight + 3.5f) / 4.0f;
+			timeDurationOfBeat = bpm / 60;
+			currentBeat = 2;
+		}
 	}
 
 	void ParseSongFile(string textFile){
@@ -89,7 +108,6 @@ public class SpawnNote : MonoBehaviour {
 					if (result [i].gameObject != null) {
 						result [i].GetComponent<Note>().move = true;
 					}
-					//Debug.Log("Spawn");
 				}
 				hasSpawned = true;
 			}
@@ -101,3 +119,12 @@ public class SpawnNote : MonoBehaviour {
 		}
 	}
 }
+
+//WHat needs to be done 
+/*
+ * be able to load the proper files from level select
+ * make spawnnote generic, aka, the music source should be loaded elsewhere and the textfile
+ * boss fight
+ * how to load the proper boss with health -> prefab(?)
+ * how do key presses from different keys do dmg, is this manageable -> get reference of boss's health by doing findwithtag
+ * / */
