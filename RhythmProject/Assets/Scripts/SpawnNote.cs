@@ -40,10 +40,10 @@ public class SpawnNote : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		arrayOfColumn [0] = -1.65f;
-		arrayOfColumn [1] = -0.55f;
-		arrayOfColumn [2] = 0.55f;
-		arrayOfColumn [3] = 1.65f;
+		arrayOfColumn [0] = -1.7f;
+		arrayOfColumn [1] = -0.565f;
+		arrayOfColumn [2] = 0.565f;
+		arrayOfColumn [3] = 1.7f;
 
 		if (fileNumber == 1) {
 			songData = Resources.Load ("sampletext") as TextAsset;
@@ -121,12 +121,3 @@ public class SpawnNote : MonoBehaviour {
 		}
 	}
 }
-
-//WHat needs to be done 
-/*
- * be able to load the proper files from level select
- * make spawnnote generic, aka, the music source should be loaded elsewhere and the textfile
- * boss fight
- * how to load the proper boss with health -> prefab(?)
- * how do key presses from different keys do dmg, is this manageable -> get reference of boss's health by doing findwithtag
- * / */

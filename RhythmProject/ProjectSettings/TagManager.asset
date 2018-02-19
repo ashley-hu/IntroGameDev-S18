@@ -9,6 +9,7 @@ TagManager:
   - B
   - N
   - Note
+  - Health
   layers:
   - Default
   - TransparentFX

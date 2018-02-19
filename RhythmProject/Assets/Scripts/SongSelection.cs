@@ -20,7 +20,6 @@ public class SongSelection : MonoBehaviour {
 
 	public void LoadSongOne(){
 		if (SceneManager.GetActiveScene ().buildIndex == 0) {
-
 			SceneManager.LoadScene ("RhythmPrototype"); 
 			SpawnNote.fileNumber = 1;
 		}
