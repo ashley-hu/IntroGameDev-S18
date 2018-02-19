@@ -20,6 +20,7 @@ public class Note : MonoBehaviour {
 			transform.position -= transform.up * Time.deltaTime * SpawnNote.speed;
 			if (transform.position.y < -5.0f) {
 				Debug.Log ("Miss");
+				GameManager.combo = 0;
 				missText.GetComponent<Text> ().text = "Miss";
 				Destroy (gameObject);
 			}

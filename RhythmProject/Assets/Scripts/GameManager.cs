@@ -9,8 +9,10 @@ public class GameManager : MonoBehaviour {
 	public static GameManager instance = null;
 	public AudioClip audioSource;
 	private int comboCount;
-	private GameObject badGoodPerfectText;
 	private GameObject comboText;
+	private GameObject scoreText;
+	public static int combo;
+	public static int score;
 
 	void Awake(){
 		if (instance == null) {
@@ -22,19 +24,25 @@ public class GameManager : MonoBehaviour {
 			Destroy(this.gameObject);
 		}
 
-		badGoodPerfectText = GameObject.FindWithTag ("BadGoodPerfect");
 		comboText = GameObject.FindWithTag ("Combo");
+		scoreText = GameObject.FindWithTag ("Score");
 	}
 
 
 
 	// Use this for initialization
 	void Start () {
-		
+		combo = 0;
+		score = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (combo != 0) {
+			comboText.GetComponent<Text> ().text = combo.ToString ();
+		} else {
+			comboText.GetComponent<Text> ().text = "";
+		}
+		scoreText.GetComponent<Text> ().text = score.ToString ();
 	}
 }
