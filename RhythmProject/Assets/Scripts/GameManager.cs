@@ -13,6 +13,15 @@ public class GameManager : MonoBehaviour {
 	private GameObject scoreText;
 	public static int combo;
 	public static int score;
+	public static int playerFullHealth;
+	public static float bossFullHealth;
+	public static float bossCurrHealth;
+
+
+	private GameObject bossHealthText;
+	private GameObject playerHealthText;
+	public static int fileNumber = 1;
+
 
 	void Awake(){
 		if (instance == null) {
@@ -26,6 +35,8 @@ public class GameManager : MonoBehaviour {
 
 		comboText = GameObject.FindWithTag ("Combo");
 		scoreText = GameObject.FindWithTag ("Score");
+		bossHealthText = GameObject.FindWithTag ("BossHealth");
+		playerHealthText = GameObject.FindWithTag ("PlayerHealth");
 	}
 
 
@@ -34,6 +45,12 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 		combo = 0;
 		score = 0;
+
+		if (fileNumber == 1) {
+			bossFullHealth = 150;
+		}
+
+		bossCurrHealth = bossFullHealth;
 	}
 	
 	// Update is called once per frame
@@ -44,5 +61,11 @@ public class GameManager : MonoBehaviour {
 			comboText.GetComponent<Text> ().text = "";
 		}
 		scoreText.GetComponent<Text> ().text = score.ToString ();
+
+		if (bossCurrHealth > 0) {
+			bossHealthText.GetComponent<Text> ().text = bossCurrHealth.ToString () + "/" + bossFullHealth.ToString ();
+		} else {
+			bossHealthText.GetComponent<Text> ().text = 0 + "/" + bossFullHealth.ToString ();
+		}
 	}
 }

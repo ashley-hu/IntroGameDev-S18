@@ -21,14 +21,14 @@ public class SongSelection : MonoBehaviour {
 	public void LoadSongOne(){
 		if (SceneManager.GetActiveScene ().buildIndex == 0) {
 			SceneManager.LoadScene ("RhythmPrototype"); 
-			SpawnNote.fileNumber = 1;
+			GameManager.fileNumber = 1;
 		}
 	}
 
 	public void LoadSongTwo(){	
 		if (SceneManager.GetActiveScene ().buildIndex == 0) {
 			SceneManager.LoadScene ("RhythmPrototype");
-			SpawnNote.fileNumber = 2;
+			GameManager.fileNumber = 2;
 		}
 	}
 }
