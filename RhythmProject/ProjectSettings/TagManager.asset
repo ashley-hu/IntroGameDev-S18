@@ -10,6 +10,8 @@ TagManager:
   - N
   - Note
   - Health
+  - BadGoodPerfect
+  - Combo
   layers:
   - Default
   - TransparentFX

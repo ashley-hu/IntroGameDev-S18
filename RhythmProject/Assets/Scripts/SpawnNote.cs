@@ -68,8 +68,8 @@ public class SpawnNote : MonoBehaviour {
 			initTime = AudioSettings.dspTime;
 			songSource.PlayScheduled (initTime + 4.0f);
 
-			speed = (spawnHeight + 3.5f) / 4.0f;
-			timeDurationOfBeat = bpm / 60;
+			speed = (spawnHeight + 4.0f) / 4.0f;
+			timeDurationOfBeat = bpm / 60 / 4;
 			currentBeat = 2;
 		}
 	}
@@ -79,8 +79,10 @@ public class SpawnNote : MonoBehaviour {
 		for (int i = 0; i < lines.Length; i++) {
 			rows = lines[i].Split(',');
 			List<GameObject> arrayOfNotes = new List<GameObject>();
+			bool hasValue = false;
 			for(int a = 0; a < rows.Length; a++){
 				if (rows [a].Contains ("1")) {
+					hasValue = true;
 					GameObject newNote = Instantiate (note, new Vector3 (arrayOfColumn [a], 5.5f, 0), transform.rotation);
 					newNote.GetComponent<Note> ().move = false;
 					if (a == 0) {
@@ -95,6 +97,9 @@ public class SpawnNote : MonoBehaviour {
 					arrayOfNotes.Add (newNote);
 				}
 			}
+			if (!hasValue) {
+				arrayOfNotes.Add (new GameObject());
+			}
 			arrayOfMeasures.Add (arrayOfNotes);
 		}
 	}
@@ -106,9 +111,12 @@ public class SpawnNote : MonoBehaviour {
 		if (songPosition > currentBeat + timeDurationOfBeat) {
 			if (arrayOfMeasures.Count > 0) {
 				List<GameObject> result = arrayOfMeasures [arrayOfMeasures.Count - 1];
+				Debug.Log (result);
 				for (int i = 0; i < result.Count; i++){
 					if (result [i].gameObject != null) {
-						result [i].GetComponent<Note>().move = true;
+						if (result [i].GetComponent<Note> ()!= null) {
+							result [i].GetComponent<Note> ().move = true;
+						}
 					}
 				}
 				hasSpawned = true;

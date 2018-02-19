@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour {
 
 	public static GameManager instance = null;
 	public AudioClip audioSource;
+	private int comboCount;
+	private GameObject badGoodPerfectText;
+	private GameObject comboText;
 
 	void Awake(){
 		if (instance == null) {
@@ -18,6 +21,9 @@ public class GameManager : MonoBehaviour {
 		{
 			Destroy(this.gameObject);
 		}
+
+		badGoodPerfectText = GameObject.FindWithTag ("BadGoodPerfect");
+		comboText = GameObject.FindWithTag ("Combo");
 	}
 
 
