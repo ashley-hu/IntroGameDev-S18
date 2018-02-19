@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.UI;
 
 public class SpawnNote : MonoBehaviour {
 	
@@ -28,26 +29,13 @@ public class SpawnNote : MonoBehaviour {
 
 	private float spawnHeight = 5.5f;
 
-	//create static variable
-	// set value to 1 , 2, etc. 
-	// update static value in song selection
-	// if 1, load this, 
-	// if 2, load that
-
-	public static int fileNumber;
+	public static int fileNumber = 1;
+	public Slider playerHealthBar;
+	public Slider bossHealthBar;
+	public static Boss boss; 
 
 	void Awake() {
 		songSource = GetComponent<AudioSource>();
-
-		if (fileNumber == 1) {
-			songData = Resources.Load ("sampletext") as TextAsset;
-			songOne = Resources.Load<AudioClip> ("demo");
-		}
-		if (fileNumber == 2) {
-			Debug.Log ("Load 2nd files");
-		}
-
-		//check if u can load data from the scene 
 	}
 
 	// Use this for initialization
@@ -56,6 +44,20 @@ public class SpawnNote : MonoBehaviour {
 		arrayOfColumn [1] = -0.55f;
 		arrayOfColumn [2] = 0.55f;
 		arrayOfColumn [3] = 1.65f;
+
+		if (fileNumber == 1) {
+			songData = Resources.Load ("sampletext") as TextAsset;
+			songOne = Resources.Load<AudioClip> ("demo");
+			boss = new Boss ();
+			boss.Health = 300;
+			bossHealthBar.maxValue = 150;
+			bossHealthBar.value = 150;
+			playerHealthBar.value = 100;
+
+		}
+		if (fileNumber == 2) {
+			Debug.Log ("Load 2nd files");
+		}
 
 		if (songData && songOne != null) {
 			textSongData = songData.text;
