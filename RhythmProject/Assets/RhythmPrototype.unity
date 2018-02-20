@@ -709,7 +709,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   note: {fileID: 1885701615060000, guid: 39d484e953ccc483ab467137103ffa30, type: 2}
-  songSource: {fileID: 0}
   playerHealthBar: {fileID: 1596283698}
   bossHealthBar: {fileID: 1073432725}
 --- !u!82 &316349596
@@ -2495,7 +2494,7 @@ GameObject:
   - component: {fileID: 1596283698}
   m_Layer: 5
   m_Name: PlayerHealthBar
-  m_TagString: Untagged
+  m_TagString: PlayerHealthBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

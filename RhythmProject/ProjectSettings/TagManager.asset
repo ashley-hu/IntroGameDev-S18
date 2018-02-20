@@ -15,6 +15,7 @@ TagManager:
   - Score
   - PlayerHealth
   - BossHealth
+  - PlayerHealthBar
   layers:
   - Default
   - TransparentFX

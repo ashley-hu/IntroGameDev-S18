@@ -15,7 +15,7 @@ public class SpawnNote : MonoBehaviour {
 	private AudioClip songOne;
 	private TextAsset songData;
 	private string textSongData;
-	public AudioSource songSource;
+	public static AudioSource songSource;
 	string[] lines;
 	string[] rows;
 	public static float speed;
@@ -24,16 +24,18 @@ public class SpawnNote : MonoBehaviour {
 	private float bpm = 120;
 	private float timeDurationOfBeat;
 	private float currentBeat;
+	private float bossCurrBeat;
 	private float songPosition;
 	private double initTime;
 	private bool hasSpawned = false;
+	public static float bossDamage = 10;
 
 	private float spawnHeight = 5.5f;
 
 	public Slider playerHealthBar;
 	public Slider bossHealthBar;
 
-	private bool endOfSong;
+	public static bool endOfSong;
 
 	void Awake() {
 		songSource = GetComponent<AudioSource>();
@@ -110,7 +112,6 @@ public class SpawnNote : MonoBehaviour {
 		if (songPosition > currentBeat + timeDurationOfBeat) {
 			if (arrayOfMeasures.Count > 0) {
 				List<GameObject> result = arrayOfMeasures [arrayOfMeasures.Count - 1];
-				Debug.Log (result);
 				for (int i = 0; i < result.Count; i++) {
 					if (result [i].gameObject != null) {
 						if (result [i].GetComponent<Note> () != null) {
@@ -128,6 +129,19 @@ public class SpawnNote : MonoBehaviour {
 			arrayOfMeasures.Remove (arrayOfMeasures [arrayOfMeasures.Count - 1]);
 			hasSpawned = false;
 		}
+
+//		//Boss Attack
+//		if(songPosition > (bossCurrBeat*8)+ timeDurationOfBeat){
+//			//Do damage to Player
+//			GameManager.playerCurrHealth -= bossDamage;
+//			if (playerHealthBar.GetComponent<Slider> ().value > 0) {
+//				playerHealthBar.GetComponent<Slider> ().value -= bossDamage;
+//			} else {
+//				songSource.Stop ();
+//				endOfSong = true;
+//			}
+//			bossCurrBeat += timeDurationOfBeat;
+//		}
 
 		if (!songSource.isPlaying && endOfSong) {
 			if (SceneManager.GetActiveScene ().buildIndex == 1) {

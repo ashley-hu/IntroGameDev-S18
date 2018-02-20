@@ -7,11 +7,13 @@ public class Note : MonoBehaviour {
 
 	public bool move;
 	private GameObject missText;
+	private GameObject healthSlider;
 
 	// Use this for initialization
 	void Start () {
 		move = false;
 		missText = GameObject.FindWithTag ("BadGoodPerfect");
+		healthSlider = GameObject.FindWithTag ("PlayerHealthBar");
 	}
 
 	// Update is called once per frame
@@ -22,6 +24,13 @@ public class Note : MonoBehaviour {
 				Debug.Log ("Miss");
 				GameManager.combo = 0;
 				missText.GetComponent<Text> ().text = "Miss";
+				GameManager.playerCurrHealth -= SpawnNote.bossDamage;
+				if (healthSlider.GetComponent<Slider> ().value > 0) {
+					healthSlider.GetComponent<Slider> ().value -= SpawnNote.bossDamage;
+				} else {
+					SpawnNote.songSource.Stop ();
+					SpawnNote.endOfSong = true;
+				}
 				Destroy (gameObject);
 			}
 		}
