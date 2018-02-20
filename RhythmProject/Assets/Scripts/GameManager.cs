@@ -39,9 +39,7 @@ public class GameManager : MonoBehaviour {
 		bossHealthText = GameObject.FindWithTag ("BossHealth");
 		playerHealthText = GameObject.FindWithTag ("PlayerHealth");
 	}
-
-
-
+		
 	// Use this for initialization
 	void Start () {
 		combo = 0;
@@ -50,6 +48,7 @@ public class GameManager : MonoBehaviour {
 		if (fileNumber == 1) {
 			bossFullHealth = 150;
 			playerFullHealth = 100;
+		} else if (fileNumber == 2) {
 		}
 
 		bossCurrHealth = bossFullHealth;
@@ -76,7 +75,16 @@ public class GameManager : MonoBehaviour {
 		} else {
 			playerHealthText.GetComponent<Text> ().text = 0 + "/" + playerFullHealth.ToString ();
 		}
+	}
 
+
+	public void Reset(){
+		combo = 0;
+		score = 0;
+		comboText.GetComponent<Text> ().text = "";
+		scoreText.GetComponent<Text> ().text = "";
+		bossHealthText.GetComponent<Text> ().text = "";
+		playerHealthText.GetComponent<Text> ().text = "";
 
 	}
 }
