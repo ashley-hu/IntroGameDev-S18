@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/RhythmPrototype.unity
     guid: 31eee277791314789ba9f510a0c858db
+  - enabled: 1
+    path: Assets/GameOver.unity
+    guid: fb233dcff10304e2ca54548170284acd

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SpawnNote : MonoBehaviour {
 	
@@ -32,6 +33,8 @@ public class SpawnNote : MonoBehaviour {
 	public Slider playerHealthBar;
 	public Slider bossHealthBar;
 
+	private bool endOfSong;
+
 	void Awake() {
 		songSource = GetComponent<AudioSource>();
 	}
@@ -44,6 +47,7 @@ public class SpawnNote : MonoBehaviour {
 		arrayOfColumn [3] = 1.7f;
 
 		if (GameManager.fileNumber == 1) {
+			Debug.Log ("File 1");
 			songData = Resources.Load ("sampletext") as TextAsset;
 			songOne = Resources.Load<AudioClip> ("demo");
 			bossHealthBar.maxValue = GameManager.bossFullHealth;
@@ -57,7 +61,7 @@ public class SpawnNote : MonoBehaviour {
 		if (songData && songOne != null) {
 			textSongData = songData.text;
 			ParseSongFile (textSongData);
-
+			endOfSong = false;
 			songSource.clip = songOne;
 
 			initTime = AudioSettings.dspTime;
@@ -107,20 +111,29 @@ public class SpawnNote : MonoBehaviour {
 			if (arrayOfMeasures.Count > 0) {
 				List<GameObject> result = arrayOfMeasures [arrayOfMeasures.Count - 1];
 				Debug.Log (result);
-				for (int i = 0; i < result.Count; i++){
+				for (int i = 0; i < result.Count; i++) {
 					if (result [i].gameObject != null) {
-						if (result [i].GetComponent<Note> ()!= null) {
+						if (result [i].GetComponent<Note> () != null) {
 							result [i].GetComponent<Note> ().move = true;
 						}
 					}
 				}
 				hasSpawned = true;
+			} else {
+				endOfSong = true;
 			}
 			currentBeat += timeDurationOfBeat;
 		}
 		if (hasSpawned) {
 			arrayOfMeasures.Remove (arrayOfMeasures [arrayOfMeasures.Count - 1]);
 			hasSpawned = false;
+		}
+
+		if (!songSource.isPlaying && endOfSong) {
+			if (SceneManager.GetActiveScene ().buildIndex == 1) {
+				endOfSong = false;
+				SceneManager.LoadScene ("GameOver");
+			}
 		}
 	}
 }

@@ -25,15 +25,6 @@ public class GameManager : MonoBehaviour {
 
 
 	void Awake(){
-		if (instance == null) {
-			instance = this;
-			DontDestroyOnLoad(this.gameObject);
-		}
-		else
-		{
-			Destroy(this.gameObject);
-		}
-
 		comboText = GameObject.FindWithTag ("Combo");
 		scoreText = GameObject.FindWithTag ("Score");
 		bossHealthText = GameObject.FindWithTag ("BossHealth");
@@ -42,13 +33,12 @@ public class GameManager : MonoBehaviour {
 		
 	// Use this for initialization
 	void Start () {
-		combo = 0;
-		score = 0;
-
 		if (fileNumber == 1) {
 			bossFullHealth = 150;
 			playerFullHealth = 100;
 		} else if (fileNumber == 2) {
+		} else {
+			Reset ();
 		}
 
 		bossCurrHealth = bossFullHealth;
@@ -57,23 +47,32 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (combo != 0) {
-			comboText.GetComponent<Text> ().text = "Combo "+ combo.ToString ();
-		} else {
-			comboText.GetComponent<Text> ().text = "";
-		}
-		scoreText.GetComponent<Text> ().text = score.ToString ();
-
-		if (bossCurrHealth > 0) {
-			bossHealthText.GetComponent<Text> ().text = bossCurrHealth.ToString () + "/" + bossFullHealth.ToString ();
-		} else {
-			bossHealthText.GetComponent<Text> ().text = 0 + "/" + bossFullHealth.ToString ();
+		if (comboText != null) {
+			if (combo != 0) {
+				comboText.GetComponent<Text> ().text = "Combo " + combo.ToString ();
+			} else {
+				comboText.GetComponent<Text> ().text = "";
+			}
 		}
 
-		if (playerCurrHealth > 0) {
-			playerHealthText.GetComponent<Text> ().text = playerCurrHealth.ToString () + "/" + playerFullHealth.ToString ();
-		} else {
-			playerHealthText.GetComponent<Text> ().text = 0 + "/" + playerFullHealth.ToString ();
+		if (scoreText != null) {
+			scoreText.GetComponent<Text> ().text = score.ToString ();
+		}
+
+		if (bossHealthText != null) {
+			if (bossCurrHealth > 0) {
+				bossHealthText.GetComponent<Text> ().text = bossCurrHealth.ToString () + "/" + bossFullHealth.ToString ();
+			} else {
+				bossHealthText.GetComponent<Text> ().text = 0 + "/" + bossFullHealth.ToString ();
+			}
+		}
+
+		if (playerHealthText != null) {
+			if (playerCurrHealth > 0) {
+				playerHealthText.GetComponent<Text> ().text = playerCurrHealth.ToString () + "/" + playerFullHealth.ToString ();
+			} else {
+				playerHealthText.GetComponent<Text> ().text = 0 + "/" + playerFullHealth.ToString ();
+			}
 		}
 	}
 
