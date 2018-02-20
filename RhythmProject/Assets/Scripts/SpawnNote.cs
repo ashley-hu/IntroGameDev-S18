@@ -48,7 +48,7 @@ public class SpawnNote : MonoBehaviour {
 			songOne = Resources.Load<AudioClip> ("demo");
 			bossHealthBar.maxValue = GameManager.bossFullHealth;
 			bossHealthBar.value = GameManager.bossFullHealth;
-			playerHealthBar.value = 100;
+			playerHealthBar.value = GameManager.playerFullHealth;
 		}
 		if (GameManager.fileNumber == 2) {
 			Debug.Log ("Load 2nd files");

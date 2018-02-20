@@ -12,6 +12,9 @@ TagManager:
   - Health
   - BadGoodPerfect
   - Combo
+  - Score
+  - PlayerHealth
+  - BossHealth
   layers:
   - Default
   - TransparentFX
