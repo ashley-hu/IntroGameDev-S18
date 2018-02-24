@@ -36,13 +36,11 @@ public class GameManager : MonoBehaviour {
 		if (fileNumber == 1) {
 			bossFullHealth = 150;
 			playerFullHealth = 100;
-		} else if (fileNumber == 2) {
-		} else {
-			Reset ();
 		}
 
 		bossCurrHealth = bossFullHealth;
 		playerCurrHealth = playerFullHealth;
+		Reset ();
 	}
 	
 	// Update is called once per frame
@@ -75,7 +73,6 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 	}
-
 
 	public void Reset(){
 		combo = 0;

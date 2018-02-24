@@ -27,12 +27,13 @@ public class SongSelection : MonoBehaviour {
 		}
 	}
 
-	public void LoadSongTwo(){	
-		if (SceneManager.GetActiveScene ().buildIndex == 0) {
-			GameManager.fileNumber = 2;
-			SceneManager.LoadScene ("RhythmPrototype");
-		}
-	}
+//	Potential future implementation of 2nd song	
+//	public void LoadSongTwo(){	
+//		if (SceneManager.GetActiveScene ().buildIndex == 0) {
+//			GameManager.fileNumber = 2;
+//			SceneManager.LoadScene ("RhythmPrototype");
+//		}
+//	}
 
 	public void ReturnToSelectScreen(){
 		if (SceneManager.GetActiveScene ().buildIndex == 2) {

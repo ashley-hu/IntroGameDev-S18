@@ -51,14 +51,16 @@ public class SpawnNote : MonoBehaviour {
 		if (GameManager.fileNumber == 1) {
 			Debug.Log ("File 1");
 			songData = Resources.Load ("sampletext") as TextAsset;
-			songOne = Resources.Load<AudioClip> ("demo");
+			songOne = Resources.Load<AudioClip> ("demo-2");
 			bossHealthBar.maxValue = GameManager.bossFullHealth;
 			bossHealthBar.value = GameManager.bossFullHealth;
 			playerHealthBar.value = GameManager.playerFullHealth;
 		}
-		if (GameManager.fileNumber == 2) {
-			Debug.Log ("Load 2nd files");
-		}
+
+//		Potential future implementation of 2nd song		
+//		if (GameManager.fileNumber == 2) {
+//			Debug.Log ("Load 2nd files");
+//		}
 
 		if (songData && songOne != null) {
 			textSongData = songData.text;
@@ -129,20 +131,7 @@ public class SpawnNote : MonoBehaviour {
 			arrayOfMeasures.Remove (arrayOfMeasures [arrayOfMeasures.Count - 1]);
 			hasSpawned = false;
 		}
-
-//		//Boss Attack
-//		if(songPosition > (bossCurrBeat*8)+ timeDurationOfBeat){
-//			//Do damage to Player
-//			GameManager.playerCurrHealth -= bossDamage;
-//			if (playerHealthBar.GetComponent<Slider> ().value > 0) {
-//				playerHealthBar.GetComponent<Slider> ().value -= bossDamage;
-//			} else {
-//				songSource.Stop ();
-//				endOfSong = true;
-//			}
-//			bossCurrBeat += timeDurationOfBeat;
-//		}
-
+			
 		if (!songSource.isPlaying && endOfSong) {
 			if (SceneManager.GetActiveScene ().buildIndex == 1) {
 				endOfSong = false;

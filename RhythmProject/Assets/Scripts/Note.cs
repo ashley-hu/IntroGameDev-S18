@@ -8,12 +8,14 @@ public class Note : MonoBehaviour {
 	public bool move;
 	private GameObject missText;
 	private GameObject healthSlider;
+	private Image damageImage;
 
 	// Use this for initialization
 	void Start () {
 		move = false;
 		missText = GameObject.FindWithTag ("BadGoodPerfect");
 		healthSlider = GameObject.FindWithTag ("PlayerHealthBar");
+		damageImage = GameObject.FindWithTag ("DamageImage").GetComponent<Image>();
 	}
 
 	// Update is called once per frame
@@ -22,6 +24,7 @@ public class Note : MonoBehaviour {
 			transform.position -= transform.up * Time.deltaTime * SpawnNote.speed;
 			if (transform.position.y < -5.0f) {
 				Debug.Log ("Miss");
+				damageImage.color = new Color (1f, 0f, 0f, 0.8f);
 				GameManager.combo = 0;
 				missText.GetComponent<Text> ().text = "Miss";
 				GameManager.playerCurrHealth -= SpawnNote.bossDamage;
@@ -32,6 +35,8 @@ public class Note : MonoBehaviour {
 					SpawnNote.endOfSong = true;
 				}
 				Destroy (gameObject);
+			} else {
+				damageImage.color = Color.Lerp (damageImage.color, Color.clear, 20 * Time.deltaTime);
 			}
 		}
 	}
