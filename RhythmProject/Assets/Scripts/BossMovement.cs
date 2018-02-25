@@ -10,9 +10,11 @@ public class BossMovement : MonoBehaviour {
 
 	RectTransform bossImage;
 	float reverse;
+	Image img;
 
 	// Use this for initialization
 	void Start () {
+		img = gameObject.GetComponent<Image> ();
 		bossImage = gameObject.GetComponent<RectTransform> ();
 		bossImage.localPosition = new Vector3 (0, 100, 0);
 		reverse = 1;
@@ -27,6 +29,8 @@ public class BossMovement : MonoBehaviour {
 			} else if (bossImage.localPosition.x < -30) {
 				reverse = 1;
 			}
+		} else {
+			img.CrossFadeAlpha (0, 1, false);
 		}
 	}
 }

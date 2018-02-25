@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour {
 			if (bossCurrHealth > 0) {
 				bossHealthText.GetComponent<Text> ().text = bossCurrHealth.ToString () + "/" + bossFullHealth.ToString ();
 			} else {
-				bossHealthText.GetComponent<Text> ().text = 0 + "/" + bossFullHealth.ToString ();
+				bossHealthText.GetComponent<Text> ().text = "DEFEATED";
 			}
 		}
 

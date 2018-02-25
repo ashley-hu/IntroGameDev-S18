@@ -36,6 +36,7 @@ public class Note : MonoBehaviour {
 				}
 				Destroy (gameObject);
 			} else {
+				//missText.GetComponent<Text> ().text = "";
 				damageImage.color = Color.Lerp (damageImage.color, Color.clear, 20 * Time.deltaTime);
 			}
 		}
