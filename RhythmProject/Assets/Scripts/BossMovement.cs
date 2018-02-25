@@ -14,7 +14,7 @@ public class BossMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		bossImage = gameObject.GetComponent<RectTransform> ();
-		bossImage.localPosition = new Vector3 (0, 110, 0);
+		bossImage.localPosition = new Vector3 (0, 100, 0);
 		reverse = 1;
 	}
 	
