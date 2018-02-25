@@ -40,7 +40,8 @@ public class ButtonC : MonoBehaviour {
 				GameManager.combo = 0;
 				GameManager.score += 5;
 				GameManager.bossCurrHealth -= 5;
-				badGoodPerfectText.GetComponent<Text> ().text = "Bad";
+				//badGoodPerfectText.GetComponent<Text> ().text = "Bad";
+				DamageTextController.CreateDamageText("BAD", 1);
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 5;
 				}
@@ -52,7 +53,8 @@ public class ButtonC : MonoBehaviour {
 				GameManager.combo += 1;
 				GameManager.score += 10;
 				GameManager.bossCurrHealth -= 10;
-				badGoodPerfectText.GetComponent<Text> ().text = "Great";
+				//badGoodPerfectText.GetComponent<Text> ().text = "Great";
+				DamageTextController.CreateDamageText("GREAT", 1);
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 10;
 				}
@@ -64,7 +66,8 @@ public class ButtonC : MonoBehaviour {
 				GameManager.combo += 1;
 				GameManager.score += 20;
 				GameManager.bossCurrHealth -= 20;
-				badGoodPerfectText.GetComponent<Text> ().text = "Perfect";
+				//badGoodPerfectText.GetComponent<Text> ().text = "Perfect";
+				DamageTextController.CreateDamageText("PERFECT", 1);
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 20;
 				}
@@ -76,7 +79,8 @@ public class ButtonC : MonoBehaviour {
 				GameManager.combo += 1;
 				GameManager.score += 10;
 				GameManager.bossCurrHealth -= 10;
-				badGoodPerfectText.GetComponent<Text> ().text = "Great";
+				//badGoodPerfectText.GetComponent<Text> ().text = "Great";
+				DamageTextController.CreateDamageText("GREAT", 1);
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 10;
 				}
@@ -88,7 +92,8 @@ public class ButtonC : MonoBehaviour {
 				GameManager.combo = 0;
 				GameManager.score += 5;
 				GameManager.bossCurrHealth -= 5;
-				badGoodPerfectText.GetComponent<Text> ().text = "Bad";
+				//badGoodPerfectText.GetComponent<Text> ().text = "Bad";
+				DamageTextController.CreateDamageText("BAD", 1);
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 5;
 				}

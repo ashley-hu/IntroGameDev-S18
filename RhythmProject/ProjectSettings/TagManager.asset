@@ -16,6 +16,9 @@ TagManager:
   - PlayerHealth
   - BossHealth
   - PlayerHealthBar
+  - DamageImage
+  - Canvas
+  - BossParent
   layers:
   - Default
   - TransparentFX
