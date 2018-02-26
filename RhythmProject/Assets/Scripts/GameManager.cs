@@ -86,7 +86,9 @@ public class GameManager : MonoBehaviour {
 			if (playerCurrHealth > 0) {
 				playerHealthText.GetComponent<Text> ().text = playerCurrHealth.ToString () + "/" + playerFullHealth.ToString ();
 			} else {
-				playerHealthText.GetComponent<Text> ().text = 0 + "/" + playerFullHealth.ToString ();
+				SpawnNote.songSource.Stop (); //if player health reaches 0, stop the song
+				SpawnNote.endOfSong = true; //set endOfSong to true
+				//playerHealthText.GetComponent<Text> ().text = 0 + "/" + playerFullHealth.ToString ();
 			}
 		}
 	}

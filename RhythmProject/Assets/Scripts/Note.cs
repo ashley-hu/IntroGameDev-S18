@@ -36,10 +36,11 @@ public class Note : MonoBehaviour {
 				GameManager.playerCurrHealth -= SpawnNote.bossDamage; //health is subtracted by amount of boss damage
 				if (healthSlider.GetComponent<Slider> ().value > 0) { //if playerHealh is greater than 0
 					healthSlider.GetComponent<Slider> ().value -= SpawnNote.bossDamage; //subtract health from damage
-				} else {
-					SpawnNote.songSource.Stop (); //if player health reaches 0, stop the song
-					SpawnNote.endOfSong = true; //set endOfSong to true
 				}
+//				else{
+//					SpawnNote.songSource.Stop (); //if player health reaches 0, stop the song
+//					SpawnNote.endOfSong = true; //set endOfSong to true
+//				}
 				Destroy (gameObject); //destroy the game object 
 			} else {
 				//clear the image color 
