@@ -4,10 +4,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/*
+ * GameManager class
+ * - Manages the current score, the combo count, the text health of boss and player
+ * - resets the score, count, and text health when loaded
+ * 
+ * */
+
 public class GameManager : MonoBehaviour {
 
-	public static GameManager instance = null;
-	public AudioClip audioSource;
+	//declare the variables 
 	private int comboCount;
 	private GameObject comboText;
 	private GameObject scoreText;
@@ -21,9 +27,9 @@ public class GameManager : MonoBehaviour {
 
 	private GameObject bossHealthText;
 	private GameObject playerHealthText;
-	public static int fileNumber = 1;
+	public static int fileNumber;
 
-
+	//get the referenced game objects
 	void Awake(){
 		comboText = GameObject.FindWithTag ("Combo");
 		scoreText = GameObject.FindWithTag ("Score");
@@ -33,14 +39,25 @@ public class GameManager : MonoBehaviour {
 		
 	// Use this for initialization
 	void Start () {
+		DamageTextController.Initialize ();
+
+		//if number is 1, set the playerhealth and bosshealth to 100 and 150 respectively
 		if (fileNumber == 1) {
-			bossFullHealth = 150;
-			playerFullHealth = 100;
+			bossFullHealth = 150; //set bossHealth to 150
+			playerFullHealth = 100; //set playerHealth to 100
 		}
 
+//		Potential future implementation
+//		if (fileNumber == 2) {
+//			bossFullHealth = 200;
+//			playerFullHealth = 150;
+//
+//		}
+
+		//set the current health to full health
 		bossCurrHealth = bossFullHealth;
 		playerCurrHealth = playerFullHealth;
-		Reset ();
+		Reset (); //reset all variables and text
 	}
 	
 	// Update is called once per frame
@@ -74,6 +91,7 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+	//Reset variables and text
 	public void Reset(){
 		combo = 0;
 		score = 0;

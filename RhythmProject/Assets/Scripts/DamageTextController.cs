@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
-[InitializeOnLoad]
+/*
+ * DamageTextController class
+ * - instantiates proper prefab
+ * - set position relative to the boss
+ * 
+ * Received help from youtube tutorial: https://www.youtube.com/watch?v=fbUOG7f3jq8 
+ * */
 public class DamageTextController : MonoBehaviour{
 
 	private static DamageText fireDmgText;
@@ -12,9 +17,11 @@ public class DamageTextController : MonoBehaviour{
 	private static DamageText grassDmgText;
 	private static GameObject bossParent;
 
-	// Use this for initialization
-	static DamageTextController() {
-		bossParent = GameObject.FindWithTag ("BossParent");
+	//initialize prefabs and game object
+	public static void Initialize() {
+		if (bossParent == null) {
+			bossParent = GameObject.FindWithTag ("BossParent");
+		}
 		if (fireDmgText == null) {
 			fireDmgText = Resources.Load<DamageText> ("FireDamage");
 		}
@@ -29,6 +36,8 @@ public class DamageTextController : MonoBehaviour{
 		}
 	}
 		
+	//Instantiate prefabs
+	//Checks value and instantiates the appropriate prefab
 	public static void CreateDamageText(string txt, int value){
 		DamageText instance;
 		if (value == 1) {
@@ -40,8 +49,16 @@ public class DamageTextController : MonoBehaviour{
 		} else {
 			instance = Instantiate (grassDmgText);
 		}
+
+		if (bossParent == null) {
+			bossParent = GameObject.FindWithTag ("BossParent");
+		}
+		//Debug.Log (bossParent);
+		//Set parent to Boss Image
 		instance.transform.SetParent (bossParent.transform, false);
-		instance.transform.position = bossParent.transform.position + new Vector3(10, 10, 0);
+		//Move the text slightly higher and to the right relative to parent
+		instance.transform.position = bossParent.transform.position + new Vector3(20, 20, 0);
+		//set the text
 		instance.SetText (txt);
 	}
 }
