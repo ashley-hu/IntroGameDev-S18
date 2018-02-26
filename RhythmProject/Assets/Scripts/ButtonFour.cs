@@ -34,7 +34,7 @@ public class ButtonFour : MonoBehaviour {
 	void Update () {
 		//if key is pressed, change the alpha to signal difference 
 		if (Input.GetKeyDown (KeyCode.N)) {
-			buttonN.GetComponent<SpriteRenderer> ().color = new Color (0, 1.0f, 0, 0.5f);
+			buttonN.GetComponent<SpriteRenderer> ().color = new Color (0, 1.0f, 0, 0.3f);
 			hit = true;
 		}
 		//if key is up, set solid color
