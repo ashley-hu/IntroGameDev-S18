@@ -64,6 +64,11 @@ public class ButtonOne : MonoBehaviour {
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 5;
 				}
+				if (BossMovement.moveLeft == true) {
+					BossMovement.anim.SetBool ("isLeftHit", true);
+				} else {
+					BossMovement.anim.SetBool ("isRightHit", true);
+				}
 				Destroy (coll.gameObject);
 			}
 			//great above
@@ -76,6 +81,11 @@ public class ButtonOne : MonoBehaviour {
 				DamageTextController.CreateDamageText("GREAT 10", 1);
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 10;
+				}
+				if (BossMovement.moveLeft == true) {
+					BossMovement.anim.SetBool ("isLeftHit", true);
+				} else {
+					BossMovement.anim.SetBool ("isRightHit", true);
 				}
 				Destroy (coll.gameObject);
 			}
@@ -90,6 +100,11 @@ public class ButtonOne : MonoBehaviour {
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 20;
 				}
+				if (BossMovement.moveLeft == true) {
+					BossMovement.anim.SetBool ("isLeftHit", true);
+				} else {
+					BossMovement.anim.SetBool ("isRightHit", true);
+				}
 				Destroy (coll.gameObject);
 			}
 			//great below
@@ -103,6 +118,11 @@ public class ButtonOne : MonoBehaviour {
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 10;
 				}
+				if (BossMovement.moveLeft == true) {
+					BossMovement.anim.SetBool ("isLeftHit", true);
+				} else {
+					BossMovement.anim.SetBool ("isRightHit", true);
+				}
 				Destroy (coll.gameObject);
 			} 
 			//bad below
@@ -115,6 +135,11 @@ public class ButtonOne : MonoBehaviour {
 				DamageTextController.CreateDamageText("BAD 5", 1);
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 5;
+				}
+				if (BossMovement.moveLeft == true) {
+					BossMovement.anim.SetBool ("isLeftHit", true);
+				} else {
+					BossMovement.anim.SetBool ("isRightHit", true);
 				}
 				Destroy (coll.gameObject);
 			}
