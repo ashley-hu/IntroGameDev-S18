@@ -23,7 +23,7 @@ public class BossMovement : MonoBehaviour {
 
 	void Update(){
 		float x = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
-		Debug.Log (x);
+		//Debug.Log (x);
 		if (x >= 0.265 && x <= 0.744) {
 			moveLeft = true;
 			moveRight = false;

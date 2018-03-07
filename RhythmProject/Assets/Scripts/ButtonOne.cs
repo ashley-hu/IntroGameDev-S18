@@ -137,9 +137,11 @@ public class ButtonOne : MonoBehaviour {
 					enemyHealth.GetComponent<Slider> ().value -= 5;
 				}
 				if (BossMovement.moveLeft == true) {
+					Debug.Log ("?????");
 					BossMovement.anim.SetBool ("isLeftHit", true);
 				} else {
 					BossMovement.anim.SetBool ("isRightHit", true);
+					Debug.Log ("?????");
 				}
 				Destroy (coll.gameObject);
 			}

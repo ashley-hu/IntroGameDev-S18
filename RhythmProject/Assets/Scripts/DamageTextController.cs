@@ -57,8 +57,11 @@ public class DamageTextController : MonoBehaviour{
 		//Set parent to Boss Image
 		instance.transform.SetParent (bossParent.transform, false);
 		//Move the text slightly higher and to the right relative to parent
-		instance.transform.position = bossParent.transform.position + new Vector3(20, 20, 0);
+		instance.transform.position = bossParent.transform.position;
+		//Debug.Log ("Boss pArent position " + bossParent.transform.position);
+		//Debug.Log ("Instance " + instance.transform.position);
 		//set the text
 		instance.SetText (txt);
+		Debug.Log ("TEXT WAS SET");
 	}
 }
