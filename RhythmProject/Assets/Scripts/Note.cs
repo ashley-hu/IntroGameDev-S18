@@ -15,6 +15,7 @@ public class Note : MonoBehaviour {
 	private GameObject missText;
 	private GameObject healthSlider;
 	private Image damageImage;
+	private float alphaLevel;
 
 	// Use this for initialization
 	void Start () {
@@ -22,12 +23,21 @@ public class Note : MonoBehaviour {
 		missText = GameObject.FindWithTag ("BadGoodPerfect");
 		healthSlider = GameObject.FindWithTag ("PlayerHealthBar");
 		damageImage = GameObject.FindWithTag ("DamageImage").GetComponent<Image>();
+		alphaLevel = 0;
 	}
 
 	// Update is called once per frame
 	void Update () {
 		if (move) { //If note is true, it will move down the screen at a particular speed 
 			transform.position -= transform.up * Time.deltaTime * SpawnNote.speed;
+			Debug.Log ("Transform: " + transform.position.y);
+			if (alphaLevel <= 1 && transform.position.y < 2) {
+				alphaLevel += 0.1f;
+				Color c = gameObject.GetComponent<SpriteRenderer> ().color;
+				c.a = alphaLevel;
+				gameObject.GetComponent<SpriteRenderer> ().color = c;
+			}
+
 			if (transform.position.y < -5.0f) {
 				//Debug.Log ("Miss");
 				damageImage.color = new Color (1f, 0f, 0f, 0.8f); //image color is set to red

@@ -106,13 +106,13 @@ public class SpawnNote : MonoBehaviour {
 					GameObject newNote = Instantiate (note, new Vector3 (arrayOfColumn [a], 5.5f, 0), transform.rotation);
 					newNote.GetComponent<Note> ().move = false; //set move to false 
 					if (a == 0) {
-						newNote.GetComponent<SpriteRenderer>().color = Color.red; //if column is 0, set note color to red
+						newNote.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 0); //if column is 0, set note color to red
 					} else if (a == 1) {
-						newNote.GetComponent<SpriteRenderer>().color = Color.blue; //if column is 1, set note color to blue
+						newNote.GetComponent<SpriteRenderer>().color = new Color(0, 0, 1, 0); //if column is 1, set note color to blue
 					} else if (a == 2) {
-						newNote.GetComponent<SpriteRenderer>().color = Color.yellow; //if column is 2, set note color to yellow
+						newNote.GetComponent<SpriteRenderer>().color = new Color(1, 0.92f, 0.016f, 0);; //if column is 2, set note color to yellow
 					} else {
-						newNote.GetComponent<SpriteRenderer>().color = Color.green; //else, set note color to green
+						newNote.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 0);; //else, set note color to green
 					}
 					arrayOfNotes.Add (newNote); //add note to list 
 				}
