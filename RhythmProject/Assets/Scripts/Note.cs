@@ -30,7 +30,7 @@ public class Note : MonoBehaviour {
 	void Update () {
 		if (move) { //If note is true, it will move down the screen at a particular speed 
 			transform.position -= transform.up * Time.deltaTime * SpawnNote.speed;
-			Debug.Log ("Transform: " + transform.position.y);
+			//Debug.Log ("Transform: " + transform.position.y);
 			if (alphaLevel <= 1 && transform.position.y < 2) {
 				alphaLevel += 0.1f;
 				Color c = gameObject.GetComponent<SpriteRenderer> ().color;

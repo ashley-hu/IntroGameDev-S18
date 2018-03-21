@@ -31,7 +31,7 @@ public class ButtonOne : MonoBehaviour {
 		enemyHealth = GameObject.FindWithTag ("Health");
 		badGoodPerfectText = GameObject.FindWithTag ("BadGoodPerfect");
 		anim = GetComponent<Animator> ();
-		anim.SetBool ("firstButtonPressed", false);
+		//anim.SetBool ("firstButtonPressed", false);
 	}
 	
 	// Update is called once per frame
@@ -45,7 +45,7 @@ public class ButtonOne : MonoBehaviour {
 		if (Input.GetKeyUp (KeyCode.C)) {
 			buttonC.GetComponent<SpriteRenderer> ().color = Color.red;
 			hit = false;
-			anim.SetBool ("firstButtonPressed", false);
+			//anim.SetBool ("firstButtonPressed", false);
 		}
 	}
 
@@ -128,9 +128,9 @@ public class ButtonOne : MonoBehaviour {
 					enemyHealth.GetComponent<Slider> ().value -= 10;
 				}
 				if (BossMovement.moveLeft == true) {
-					BossMovement.anim.SetBool ("isLeftHit", true);
+					//BossMovement.anim.SetBool ("isLeftHit", true);
 				} else {
-					BossMovement.anim.SetBool ("isRightHit", true);
+					//BossMovement.anim.SetBool ("isRightHit", true);
 				}
 				Destroy (coll.gameObject);
 			} 
@@ -147,11 +147,11 @@ public class ButtonOne : MonoBehaviour {
 					enemyHealth.GetComponent<Slider> ().value -= 5;
 				}
 				if (BossMovement.moveLeft == true) {
-					Debug.Log ("?????");
-					BossMovement.anim.SetBool ("isLeftHit", true);
+					//Debug.Log ("?????");
+					//BossMovement.anim.SetBool ("isLeftHit", true);
 				} else {
-					BossMovement.anim.SetBool ("isRightHit", true);
-					Debug.Log ("?????");
+					//BossMovement.anim.SetBool ("isRightHit", true);
+					//Debug.Log ("?????");
 				}
 				Destroy (coll.gameObject);
 			}
