@@ -21,6 +21,7 @@ public class ButtonOne : MonoBehaviour {
 	private GameObject enemyHealth;
 	private GameObject badGoodPerfectText;
 	private bool hit;
+	private Image bossIm;
 
 	// Use this for initialization
 	void Start () {
@@ -31,6 +32,7 @@ public class ButtonOne : MonoBehaviour {
 		enemyHealth = GameObject.FindWithTag ("Health");
 		badGoodPerfectText = GameObject.FindWithTag ("BadGoodPerfect");
 		anim = GetComponent<Animator> ();
+		bossIm = GameObject.FindWithTag ("BossParent").GetComponent<Image>();
 		//anim.SetBool ("firstButtonPressed", false);
 	}
 	
@@ -47,6 +49,7 @@ public class ButtonOne : MonoBehaviour {
 			hit = false;
 			//anim.SetBool ("firstButtonPressed", false);
 		}
+		bossIm.color = Color.Lerp (bossIm.color, Color.white, Time.deltaTime * 0.8f);
 	}
 
 	//checks for collision with falling note 
@@ -66,15 +69,17 @@ public class ButtonOne : MonoBehaviour {
 				GameManager.score += 5;
 				GameManager.bossCurrHealth -= 5;
 				badGoodPerfectText.GetComponent<Text> ().text = "";
-				DamageTextController.CreateDamageText("BAD 5", 1);
+				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
+				DamageTextController.CreateDamageText ("BAD 5", 1);
+
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 5;
 				}
-				if (BossMovement.moveLeft == true) {
-					BossMovement.anim.SetBool ("isLeftHit", true);
-				} else {
-					BossMovement.anim.SetBool ("isRightHit", true);
-				}
+//				if (BossMovement.moveLeft == true) {
+//					BossMovement.anim.SetBool ("isLeftHit", true);
+//				} else {
+//					BossMovement.anim.SetBool ("isRightHit", true);
+//				}
 				Destroy (coll.gameObject);
 			}
 			//great above
@@ -85,15 +90,16 @@ public class ButtonOne : MonoBehaviour {
 				GameManager.score += 10;
 				GameManager.bossCurrHealth -= 10;
 				badGoodPerfectText.GetComponent<Text> ().text = "";
-				DamageTextController.CreateDamageText("GREAT 10", 1);
+				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
+				DamageTextController.CreateDamageText ("GREAT 10", 1);
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 10;
 				}
-				if (BossMovement.moveLeft == true) {
-					BossMovement.anim.SetBool ("isLeftHit", true);
-				} else {
-					BossMovement.anim.SetBool ("isRightHit", true);
-				}
+//				if (BossMovement.moveLeft == true) {
+//					BossMovement.anim.SetBool ("isLeftHit", true);
+//				} else {
+//					BossMovement.anim.SetBool ("isRightHit", true);
+//				}
 				Destroy (coll.gameObject);
 			}
 			//perfect
@@ -104,15 +110,16 @@ public class ButtonOne : MonoBehaviour {
 				GameManager.score += 20;
 				GameManager.bossCurrHealth -= 20;
 				badGoodPerfectText.GetComponent<Text> ().text = "";
-				DamageTextController.CreateDamageText("PERFECT 20", 1);
+				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
+				DamageTextController.CreateDamageText ("PERFECT 20", 1);
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 20;
 				}
-				if (BossMovement.moveLeft == true) {
-					BossMovement.anim.SetBool ("isLeftHit", true);
-				} else {
-					BossMovement.anim.SetBool ("isRightHit", true);
-				}
+//				if (BossMovement.moveLeft == true) {
+//					BossMovement.anim.SetBool ("isLeftHit", true);
+//				} else {
+//					BossMovement.anim.SetBool ("isRightHit", true);
+//				}
 				Destroy (coll.gameObject);
 			}
 			//great below
@@ -123,15 +130,16 @@ public class ButtonOne : MonoBehaviour {
 				GameManager.score += 10;
 				GameManager.bossCurrHealth -= 10;
 				badGoodPerfectText.GetComponent<Text> ().text = "";
-				DamageTextController.CreateDamageText("GREAT 10", 1);
+				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
+				DamageTextController.CreateDamageText ("GREAT 10", 1);
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 10;
 				}
-				if (BossMovement.moveLeft == true) {
-					//BossMovement.anim.SetBool ("isLeftHit", true);
-				} else {
-					//BossMovement.anim.SetBool ("isRightHit", true);
-				}
+//				if (BossMovement.moveLeft == true) {
+//					//BossMovement.anim.SetBool ("isLeftHit", true);
+//				} else {
+//					//BossMovement.anim.SetBool ("isRightHit", true);
+//				}
 				Destroy (coll.gameObject);
 			} 
 			//bad below
@@ -142,19 +150,20 @@ public class ButtonOne : MonoBehaviour {
 				GameManager.score += 5;
 				GameManager.bossCurrHealth -= 5;
 				badGoodPerfectText.GetComponent<Text> ().text = "";
-				DamageTextController.CreateDamageText("BAD 5", 1);
+				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
+				DamageTextController.CreateDamageText ("BAD 5", 1);
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 5;
 				}
-				if (BossMovement.moveLeft == true) {
-					//Debug.Log ("?????");
-					//BossMovement.anim.SetBool ("isLeftHit", true);
-				} else {
-					//BossMovement.anim.SetBool ("isRightHit", true);
-					//Debug.Log ("?????");
-				}
+//				if (BossMovement.moveLeft == true) {
+//					//Debug.Log ("?????");
+//					//BossMovement.anim.SetBool ("isLeftHit", true);
+//				} else {
+//					//BossMovement.anim.SetBool ("isRightHit", true);
+//					//Debug.Log ("?????");
+//				}
 				Destroy (coll.gameObject);
 			}
-		}
+		} 
 	}
 }

@@ -62,6 +62,5 @@ public class DamageTextController : MonoBehaviour{
 		//Debug.Log ("Instance " + instance.transform.position);
 		//set the text
 		instance.SetText (txt);
-		Debug.Log ("TEXT WAS SET");
 	}
 }

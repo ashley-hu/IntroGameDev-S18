@@ -148,8 +148,8 @@ public class SpawnNote : MonoBehaviour {
 			arrayOfMeasures.Remove (arrayOfMeasures [arrayOfMeasures.Count - 1]);
 			hasSpawned = false;
 			FireSpit.setFire = true;
-			Debug.Log ("FireSpit.setFire " + FireSpit.setFire);
-			Debug.Log ("Bruh");
+//			Debug.Log ("FireSpit.setFire " + FireSpit.setFire);
+//			Debug.Log ("Bruh");
 		} else {
 			FireSpit.setFire = false;
 		}

@@ -19,6 +19,7 @@ public class ButtonTwo : MonoBehaviour {
 	private GameObject enemyHealth;
 	private GameObject badGoodPerfectText;
 	private bool hit;
+	private Image bossIm;
 
 	// Use this for initialization
 	void Start () {
@@ -28,6 +29,7 @@ public class ButtonTwo : MonoBehaviour {
 		hit = false;
 		enemyHealth = GameObject.FindWithTag ("Health");
 		badGoodPerfectText = GameObject.FindWithTag ("BadGoodPerfect");
+		bossIm = GameObject.FindWithTag ("BossParent").GetComponent<Image>();
 	}
 	
 	// Update is called once per frame
@@ -42,6 +44,7 @@ public class ButtonTwo : MonoBehaviour {
 			buttonV.GetComponent<SpriteRenderer> ().color = Color.blue;
 			hit = false;
 		}
+		bossIm.color = Color.Lerp (bossIm.color, Color.white, Time.deltaTime * 0.8f);
 	}
 
 	//checks for collision with falling note 
@@ -60,6 +63,7 @@ public class ButtonTwo : MonoBehaviour {
 				GameManager.score += 5;
 				GameManager.bossCurrHealth -= 5;
 				badGoodPerfectText.GetComponent<Text> ().text = "";
+				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
 				DamageTextController.CreateDamageText("BAD 5", 2);
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 5;
@@ -73,6 +77,7 @@ public class ButtonTwo : MonoBehaviour {
 				GameManager.score += 10;
 				GameManager.bossCurrHealth -= 10;
 				badGoodPerfectText.GetComponent<Text> ().text = "";
+				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
 				DamageTextController.CreateDamageText("GREAT 10", 2);
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 10;
@@ -86,6 +91,7 @@ public class ButtonTwo : MonoBehaviour {
 				GameManager.score += 20;
 				GameManager.bossCurrHealth -= 20;
 				badGoodPerfectText.GetComponent<Text> ().text = "";
+				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
 				DamageTextController.CreateDamageText("PERFECT 20", 2);
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 20;
@@ -99,6 +105,7 @@ public class ButtonTwo : MonoBehaviour {
 				GameManager.score += 10;
 				GameManager.bossCurrHealth -= 10;
 				badGoodPerfectText.GetComponent<Text> ().text = "";
+				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
 				DamageTextController.CreateDamageText("GREAT 10", 2);
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 10;
@@ -112,6 +119,7 @@ public class ButtonTwo : MonoBehaviour {
 				GameManager.score += 5;
 				GameManager.bossCurrHealth -= 5;
 				badGoodPerfectText.GetComponent<Text> ().text = "";
+				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
 				DamageTextController.CreateDamageText("BAD 5", 2);
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 5;
