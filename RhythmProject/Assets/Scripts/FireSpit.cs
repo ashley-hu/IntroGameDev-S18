@@ -18,6 +18,6 @@ public class FireSpit : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		anim.SetBool ("spitFire", setFire);
-		Debug.Log ("setFire "+ setFire);
+		//Debug.Log ("setFire "+ setFire);
 	}
 }

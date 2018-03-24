@@ -71,6 +71,7 @@ public class ButtonOne : MonoBehaviour {
 				badGoodPerfectText.GetComponent<Text> ().text = "";
 				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
 				DamageTextController.CreateDamageText ("BAD 5", 1);
+				RankingTextController.CreateDamageText ("TEST", 1);
 
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 5;
@@ -92,6 +93,8 @@ public class ButtonOne : MonoBehaviour {
 				badGoodPerfectText.GetComponent<Text> ().text = "";
 				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
 				DamageTextController.CreateDamageText ("GREAT 10", 1);
+				RankingTextController.CreateDamageText ("TEST", 1);
+
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 10;
 				}
@@ -112,6 +115,8 @@ public class ButtonOne : MonoBehaviour {
 				badGoodPerfectText.GetComponent<Text> ().text = "";
 				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
 				DamageTextController.CreateDamageText ("PERFECT 20", 1);
+				RankingTextController.CreateDamageText ("TEST", 1);
+
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 20;
 				}
@@ -132,6 +137,8 @@ public class ButtonOne : MonoBehaviour {
 				badGoodPerfectText.GetComponent<Text> ().text = "";
 				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
 				DamageTextController.CreateDamageText ("GREAT 10", 1);
+				RankingTextController.CreateDamageText ("TEST", 1);
+
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 10;
 				}
@@ -152,6 +159,8 @@ public class ButtonOne : MonoBehaviour {
 				badGoodPerfectText.GetComponent<Text> ().text = "";
 				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
 				DamageTextController.CreateDamageText ("BAD 5", 1);
+				RankingTextController.CreateDamageText ("TEST", 1);
+
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 5;
 				}

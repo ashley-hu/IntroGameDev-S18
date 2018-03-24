@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		DamageTextController.Initialize ();
+		RankingTextController.Initialize ();
 
 		//if number is 1, set the playerhealth and bosshealth to 100 and 150 respectively
 		if (fileNumber == 1) {
