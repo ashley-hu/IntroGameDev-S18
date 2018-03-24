@@ -12,10 +12,12 @@ using UnityEngine.UI;
 public class Note : MonoBehaviour {
 
 	public bool move;
+	public float column;
 	private GameObject missText;
 	private GameObject healthSlider;
 	private Image damageImage;
 	private float alphaLevel;
+	public float destinationColumn;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +26,22 @@ public class Note : MonoBehaviour {
 		healthSlider = GameObject.FindWithTag ("PlayerHealthBar");
 		damageImage = GameObject.FindWithTag ("DamageImage").GetComponent<Image>();
 		alphaLevel = 0;
+
+		//		arrayOfColumn [0] = -1.7f; //red lane
+		//		arrayOfColumn [1] = -0.565f; //blue lane
+		//		arrayOfColumn [2] = 0.565f; //yellow lane
+		//		arrayOfColumn [3] = 1.7f; //green lane
+
+//		if (column == 0) {
+//			destinationColumn = -1.7f;
+//		} else if (column == 1) {
+//			destinationColumn = -0.565f;
+//		} else if (column == 2) {
+//			destinationColumn = 0.565f;
+//		} else if (column == 3) {
+//			destinationColumn = 1.7f;
+//		}
+//		Debug.Log ("Here: " + column + " " + "There " + destinationColumn);
 	}
 
 	// Update is called once per frame
@@ -31,12 +49,12 @@ public class Note : MonoBehaviour {
 		if (move) { //If note is true, it will move down the screen at a particular speed 
 			transform.position -= transform.up * Time.deltaTime * SpawnNote.speed;
 			//Debug.Log ("Transform: " + transform.position.y);
-			if (alphaLevel <= 1 && transform.position.y < 2) {
-				alphaLevel += 0.1f;
-				Color c = gameObject.GetComponent<SpriteRenderer> ().color;
-				c.a = alphaLevel;
-				gameObject.GetComponent<SpriteRenderer> ().color = c;
-			}
+//			if (alphaLevel <= 1 && transform.position.y < 2) {
+//				alphaLevel += 0.1f;
+//				Color c = gameObject.GetComponent<SpriteRenderer> ().color;
+//				c.a = alphaLevel;
+//				gameObject.GetComponent<SpriteRenderer> ().color = c;
+//			}
 
 			if (transform.position.y < -5.0f) {
 				//Debug.Log ("Miss");
