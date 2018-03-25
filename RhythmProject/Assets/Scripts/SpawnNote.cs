@@ -209,7 +209,7 @@ public class SpawnNote : MonoBehaviour {
 
 		for (int i = 0; i < arrayOfMeasures.Count; i++) {
 			for (int k = 0; k < arrayOfMeasures [i].Count; k++) {
-				Debug.Log (" DJLAKWDWD: " + arrayOfMeasures [i] [k].transform.position);
+				//Debug.Log (" DJLAKWDWD: " + arrayOfMeasures [i] [k].transform.position);
 				if ( arrayOfMeasures [i] [k].gameObject != null) {
 					if (arrayOfMeasures [i] [k].GetComponent<Note> () != null) {
 						if (arrayOfMeasures [i] [k].GetComponent<Note> ().transform.position.x <= arrayOfMeasures [i][k].GetComponent<Note> ().destinationColumn) {
@@ -217,8 +217,6 @@ public class SpawnNote : MonoBehaviour {
 							//Debug.Log ("Second Pos: " + arrayOfMeasures [i][k].GetComponent<Note> ().destinationColumn);
 							arrayOfMeasures [i][k].GetComponent<Note> ().transform.position = 
 								Vector3.MoveTowards(arrayOfMeasures [i][k].GetComponent<Note> ().transform.position, new Vector3(arrayOfMeasures [i][k].GetComponent<Note> ().destinationColumn,2.6f,0), Time.deltaTime * speed);
-							//Debug.Log(result[i].GetComponent<Note>().transform.position);
-							//continue;
 						}
 					}
 				}
