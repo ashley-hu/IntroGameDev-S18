@@ -219,13 +219,13 @@ public class SpawnNote : MonoBehaviour {
 							//Debug.Log ("Second Pos: " + arrayOfMeasures [i][k].GetComponent<Note> ().destinationColumn);
 							arrayOfMeasures [i][k].GetComponent<Note> ().transform.position = 
 								Vector3.MoveTowards(arrayOfMeasures [i][k].GetComponent<Note> ().transform.position, new Vector3(arrayOfMeasures [i][k].GetComponent<Note> ().destinationColumn,2.6f,0), Time.deltaTime * speed);
-							if (arrayOfMeasures [i] [k].GetComponent<Note> ().GetComponent<SpriteRenderer> ().color.a < 1) {
-								Color c = arrayOfMeasures [i] [k].GetComponent<Note> ().GetComponent<SpriteRenderer> ().color;
-								c.a += 0.01f;
-								arrayOfMeasures [i] [k].GetComponent<Note> ().GetComponent<SpriteRenderer> ().color = c;
-							}
-							
 						}
+						if (arrayOfMeasures [i] [k].GetComponent<Note> ().GetComponent<SpriteRenderer> ().color.a < 1) {
+							Color c = arrayOfMeasures [i] [k].GetComponent<Note> ().GetComponent<SpriteRenderer> ().color;
+							c.a += 0.01f;
+							arrayOfMeasures [i] [k].GetComponent<Note> ().GetComponent<SpriteRenderer> ().color = c;
+						}
+
 					}
 				}
 

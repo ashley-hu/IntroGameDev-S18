@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour {
 
 		//if number is 1, set the playerhealth and bosshealth to 100 and 150 respectively
 		if (fileNumber == 1) {
-			bossFullHealth = 150; //set bossHealth to 150
+			bossFullHealth = 250; //set bossHealth to 150
 			playerFullHealth = 100; //set playerHealth to 100
 		}
 

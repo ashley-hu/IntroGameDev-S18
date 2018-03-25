@@ -64,7 +64,9 @@ public class ButtonFour : MonoBehaviour {
 				GameManager.bossCurrHealth -= 5;
 				badGoodPerfectText.GetComponent<Text> ().text = "";
 				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
-				DamageTextController.CreateDamageText("5", 4);
+				if (GameManager.bossCurrHealth > 0) {
+					DamageTextController.CreateDamageText ("5", 4);
+				}
 				RankingTextController.CreateDamageText ("BAD", 1);
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 5;
@@ -79,7 +81,9 @@ public class ButtonFour : MonoBehaviour {
 				GameManager.bossCurrHealth -= 10;
 				badGoodPerfectText.GetComponent<Text> ().text = "";
 				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
-				DamageTextController.CreateDamageText("10", 4);
+				if (GameManager.bossCurrHealth > 0) {
+					DamageTextController.CreateDamageText ("10", 4);
+				}
 				RankingTextController.CreateDamageText ("GREAT", 1);
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 10;
@@ -94,7 +98,9 @@ public class ButtonFour : MonoBehaviour {
 				GameManager.bossCurrHealth -= 20;
 				badGoodPerfectText.GetComponent<Text> ().text = "";
 				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
-				DamageTextController.CreateDamageText("20", 4);
+				if (GameManager.bossCurrHealth > 0) {
+					DamageTextController.CreateDamageText ("20", 4);
+				}
 				RankingTextController.CreateDamageText ("PERFECT", 1);
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 20;
@@ -109,7 +115,9 @@ public class ButtonFour : MonoBehaviour {
 				GameManager.bossCurrHealth -= 10;
 				badGoodPerfectText.GetComponent<Text> ().text = "";
 				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
-				DamageTextController.CreateDamageText("10", 4);
+				if (GameManager.bossCurrHealth > 0) {
+					DamageTextController.CreateDamageText ("10", 4);
+				}
 				RankingTextController.CreateDamageText ("GREAT", 1);
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 10;
@@ -124,7 +132,9 @@ public class ButtonFour : MonoBehaviour {
 				GameManager.bossCurrHealth -= 5;
 				badGoodPerfectText.GetComponent<Text> ().text = "";
 				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
-				DamageTextController.CreateDamageText("5", 4);
+				if (GameManager.bossCurrHealth > 0) {
+					DamageTextController.CreateDamageText ("5", 4);
+				}
 				RankingTextController.CreateDamageText ("BAD", 1);
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 5;
