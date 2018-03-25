@@ -137,18 +137,22 @@ public class SpawnNote : MonoBehaviour {
 						newNote.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 0); //if column is 0, set note color to red
 						//newNote.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0);
 						newNote.GetComponent<Note>().destinationColumn = -1.7f;
+						newNote.GetComponent<Transform> ().localScale = new Vector3 (0.1f, 0.1f, 0.1f);
 					} else if (a == 1) {
 						newNote.GetComponent<SpriteRenderer>().color = new Color(0, 0, 1, 0); //if column is 1, set note color to blue
 						//newNote.GetComponent<SpriteRenderer>().color = new Color(0, 0, 1); 
 						newNote.GetComponent<Note>().destinationColumn = -0.565f;
+						newNote.GetComponent<Transform> ().localScale = new Vector3 (0.1f, 0.1f, 0.1f);
 					} else if (a == 2) {
 						//newNote.GetComponent<SpriteRenderer>().color = new Color(1, 0.92f, 0.016f); 
 						newNote.GetComponent<SpriteRenderer>().color = new Color(1, 0.92f, 0.016f, 0);; //if column is 2, set note color to yellow
 						newNote.GetComponent<Note>().destinationColumn = 0.565f;
+						newNote.GetComponent<Transform> ().localScale = new Vector3 (0.1f, 0.1f, 0.1f);
 					} else {
 						//newNote.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0);
 						newNote.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 0); //else, set note color to green
 						newNote.GetComponent<Note>().destinationColumn = 1.7f;
+						newNote.GetComponent<Transform> ().localScale = new Vector3 (0.1f, 0.1f, 0.1f);
 					}
 					arrayOfNotes.Add (newNote); //add note to list 
 				}
@@ -203,12 +207,6 @@ public class SpawnNote : MonoBehaviour {
 	}
 
 	public void StartSpawn(){
-//		for (int i = 0; i < arrayOfMeasures.Count; i++) {
-//			for (int k = 0; k < arrayOfMeasures [i].Count; k++) {
-//				Debug.Log (" DJLAKWDWD: " + arrayOfMeasures [i] [k].transform.position);
-//			}
-//		}
-
 		for (int i = 0; i < arrayOfMeasures.Count; i++) {
 			for (int k = 0; k < arrayOfMeasures [i].Count; k++) {
 				//Debug.Log (" DJLAKWDWD: " + arrayOfMeasures [i] [k].transform.position);
@@ -224,6 +222,12 @@ public class SpawnNote : MonoBehaviour {
 							Color c = arrayOfMeasures [i] [k].GetComponent<Note> ().GetComponent<SpriteRenderer> ().color;
 							c.a += 0.01f;
 							arrayOfMeasures [i] [k].GetComponent<Note> ().GetComponent<SpriteRenderer> ().color = c;
+						}
+						if (arrayOfMeasures [i] [k].GetComponent<Note> ().GetComponent<Transform> ().localScale.x <= 1 &&
+							arrayOfMeasures [i] [k].GetComponent<Note> ().GetComponent<Transform> ().localScale.y <= 1 &&
+							arrayOfMeasures [i] [k].GetComponent<Note> ().GetComponent<Transform> ().localScale.z <= 1) {
+
+							arrayOfMeasures [i] [k].GetComponent<Note> ().GetComponent<Transform> ().localScale += new Vector3(0.01F, 0.01F, 0.01F);
 						}
 
 					}
