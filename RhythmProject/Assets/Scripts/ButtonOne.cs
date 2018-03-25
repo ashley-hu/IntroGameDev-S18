@@ -49,7 +49,7 @@ public class ButtonOne : MonoBehaviour {
 			hit = false;
 			//anim.SetBool ("firstButtonPressed", false);
 		}
-		bossIm.color = Color.Lerp (bossIm.color, Color.white, Time.deltaTime * 0.8f);
+		bossIm.color = Color.Lerp (bossIm.color, Color.white, Time.deltaTime * 0.7f);
 	}
 
 	//checks for collision with falling note 
@@ -69,7 +69,8 @@ public class ButtonOne : MonoBehaviour {
 				GameManager.score += 5;
 				GameManager.bossCurrHealth -= 5;
 				badGoodPerfectText.GetComponent<Text> ().text = "";
-				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
+				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer>().color;
+				//bossIm.color = new Color(1, 0, 0, 0.2f);
 				if (GameManager.bossCurrHealth > 0) {
 					DamageTextController.CreateDamageText ("5", 1);
 				}
@@ -94,6 +95,7 @@ public class ButtonOne : MonoBehaviour {
 				GameManager.bossCurrHealth -= 10;
 				badGoodPerfectText.GetComponent<Text> ().text = "";
 				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
+				bossIm.color = new Color(1, 0, 0);
 				if (GameManager.bossCurrHealth > 0) {
 					DamageTextController.CreateDamageText ("10", 1);
 				}
@@ -118,6 +120,7 @@ public class ButtonOne : MonoBehaviour {
 				GameManager.bossCurrHealth -= 20;
 				badGoodPerfectText.GetComponent<Text> ().text = "";
 				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
+				//bossIm.color = new Color(255, 0, 0, 255);
 				if (GameManager.bossCurrHealth > 0) {
 					DamageTextController.CreateDamageText ("20", 1);
 				}
@@ -142,6 +145,7 @@ public class ButtonOne : MonoBehaviour {
 				GameManager.bossCurrHealth -= 10;
 				badGoodPerfectText.GetComponent<Text> ().text = "";
 				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
+				//bossIm.color = new Color(1, 0, 0);
 				if (GameManager.bossCurrHealth > 0) {
 					DamageTextController.CreateDamageText ("10", 1);
 				}
@@ -166,6 +170,7 @@ public class ButtonOne : MonoBehaviour {
 				GameManager.bossCurrHealth -= 5;
 				badGoodPerfectText.GetComponent<Text> ().text = "";
 				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
+				//bossIm.color = new Color(1, 0, 0);
 				if (GameManager.bossCurrHealth > 0) {
 					DamageTextController.CreateDamageText ("5", 1);
 				}

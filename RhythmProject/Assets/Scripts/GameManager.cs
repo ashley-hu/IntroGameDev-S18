@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour {
 	public static float bossFullHealth;
 	public static float bossCurrHealth;
 
-
+	private GameObject bonusText;
 	private GameObject bossHealthText;
 	private GameObject playerHealthText;
 	public static int fileNumber;
@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour {
 		scoreText = GameObject.FindWithTag ("Score");
 		bossHealthText = GameObject.FindWithTag ("BossHealth");
 		playerHealthText = GameObject.FindWithTag ("PlayerHealth");
+		bonusText = GameObject.FindWithTag ("Bonus");
 	}
 		
 	// Use this for initialization
@@ -58,6 +59,7 @@ public class GameManager : MonoBehaviour {
 		//set the current health to full health
 		bossCurrHealth = bossFullHealth;
 		playerCurrHealth = playerFullHealth;
+		bonusText.GetComponent<Text> ().color = new Color (1, 0.517f, 0, 0);
 		Reset (); //reset all variables and text
 	}
 	
@@ -80,6 +82,11 @@ public class GameManager : MonoBehaviour {
 				bossHealthText.GetComponent<Text> ().text = bossCurrHealth.ToString () + "/" + bossFullHealth.ToString ();
 			} else {
 				bossHealthText.GetComponent<Text> ().text = "DEFEATED";
+				//bonusText.GetComponent<Text> ().text = "BONUS";
+				//bonusText.GetComponent<Text> ().CrossFadeAlpha (0, 2000, false);
+				Color c = bonusText.GetComponent<Text>().color;
+				c.a += 0.01f;
+				bonusText.GetComponent<Text>().color = c;
 			}
 		}
 
@@ -102,6 +109,6 @@ public class GameManager : MonoBehaviour {
 		scoreText.GetComponent<Text> ().text = "";
 		bossHealthText.GetComponent<Text> ().text = "";
 		playerHealthText.GetComponent<Text> ().text = "";
-
+		//bonusText.GetComponent<Text> ().text = "";
 	}
 }

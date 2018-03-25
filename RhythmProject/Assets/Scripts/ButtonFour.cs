@@ -44,7 +44,7 @@ public class ButtonFour : MonoBehaviour {
 			buttonN.GetComponent<SpriteRenderer> ().color = Color.green;
 			hit = false;
 		}
-		bossIm.color = Color.Lerp (bossIm.color, Color.white, Time.deltaTime * 0.8f);
+		bossIm.color = Color.Lerp (bossIm.color, Color.white, Time.deltaTime * 0.7f);
 	}
 
 	//checks for collision with falling note 
