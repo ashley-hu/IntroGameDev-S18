@@ -6,18 +6,26 @@ public class FireSpit : MonoBehaviour {
 
 	public Animator anim;
 	public static bool setFire;
+	private bool isMoving;
 
 
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator> ();
-		setFire = false;
+		setFire = true;
+		isMoving = false;
 		//anim.SetBool ("spitFire", setFire);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		anim.SetBool ("spitFire", setFire);
+		if (!isMoving) {
+			anim.SetBool ("spitFire", setFire);
+		}
+		if (anim.GetCurrentAnimatorStateInfo(0).IsName("spitFire"))	{
+			isMoving = true;
+		}
+		//anim.SetBool ("spitFire", setFire);
 		//Debug.Log ("setFire "+ setFire);
 	}
 }

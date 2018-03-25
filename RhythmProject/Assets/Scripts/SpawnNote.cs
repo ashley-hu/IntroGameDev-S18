@@ -47,6 +47,7 @@ public class SpawnNote : MonoBehaviour {
 
 	public static bool endOfSong; 
 	private bool startSpawning;
+//	private float alphaLevel;
 
 	//get audio source component
 	void Awake() {
@@ -71,6 +72,7 @@ public class SpawnNote : MonoBehaviour {
 			bossHealthBar.maxValue = GameManager.bossFullHealth;
 			bossHealthBar.value = GameManager.bossFullHealth;
 			playerHealthBar.value = GameManager.playerFullHealth;
+			//alphaLevel = 0;
 		}
 
 //		Potential future implementation of 2nd song		
@@ -132,20 +134,20 @@ public class SpawnNote : MonoBehaviour {
 //					Debug.Log ("Here: " + column + " " + "There " + destinationColumn);
 
 					if (a == 0) {
-						//newNote.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 0); //if column is 0, set note color to red
-						newNote.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0);
+						newNote.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 0); //if column is 0, set note color to red
+						//newNote.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0);
 						newNote.GetComponent<Note>().destinationColumn = -1.7f;
 					} else if (a == 1) {
-						//newNote.GetComponent<SpriteRenderer>().color = new Color(0, 0, 1, 0); //if column is 1, set note color to blue
-						newNote.GetComponent<SpriteRenderer>().color = new Color(0, 0, 1); 
+						newNote.GetComponent<SpriteRenderer>().color = new Color(0, 0, 1, 0); //if column is 1, set note color to blue
+						//newNote.GetComponent<SpriteRenderer>().color = new Color(0, 0, 1); 
 						newNote.GetComponent<Note>().destinationColumn = -0.565f;
 					} else if (a == 2) {
-						newNote.GetComponent<SpriteRenderer>().color = new Color(1, 0.92f, 0.016f); 
-						//newNote.GetComponent<SpriteRenderer>().color = new Color(1, 0.92f, 0.016f, 0);; //if column is 2, set note color to yellow
+						//newNote.GetComponent<SpriteRenderer>().color = new Color(1, 0.92f, 0.016f); 
+						newNote.GetComponent<SpriteRenderer>().color = new Color(1, 0.92f, 0.016f, 0);; //if column is 2, set note color to yellow
 						newNote.GetComponent<Note>().destinationColumn = 0.565f;
 					} else {
-						newNote.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0);
-						//newNote.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 0); //else, set note color to green
+						//newNote.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0);
+						newNote.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 0); //else, set note color to green
 						newNote.GetComponent<Note>().destinationColumn = 1.7f;
 					}
 					arrayOfNotes.Add (newNote); //add note to list 
@@ -185,11 +187,11 @@ public class SpawnNote : MonoBehaviour {
 		if (hasSpawned) {
 			arrayOfMeasures.Remove (arrayOfMeasures [arrayOfMeasures.Count - 1]);
 			hasSpawned = false;
-			FireSpit.setFire = true;
+		//	FireSpit.setFire = true;
 //			Debug.Log ("FireSpit.setFire " + FireSpit.setFire);
 //			Debug.Log ("Bruh");
 		} else {
-			FireSpit.setFire = false;
+			//FireSpit.setFire = false;
 		}
 			
 		if (!songSource.isPlaying && endOfSong) {
@@ -217,6 +219,12 @@ public class SpawnNote : MonoBehaviour {
 							//Debug.Log ("Second Pos: " + arrayOfMeasures [i][k].GetComponent<Note> ().destinationColumn);
 							arrayOfMeasures [i][k].GetComponent<Note> ().transform.position = 
 								Vector3.MoveTowards(arrayOfMeasures [i][k].GetComponent<Note> ().transform.position, new Vector3(arrayOfMeasures [i][k].GetComponent<Note> ().destinationColumn,2.6f,0), Time.deltaTime * speed);
+							if (arrayOfMeasures [i] [k].GetComponent<Note> ().GetComponent<SpriteRenderer> ().color.a < 1) {
+								Color c = arrayOfMeasures [i] [k].GetComponent<Note> ().GetComponent<SpriteRenderer> ().color;
+								c.a += 0.01f;
+								arrayOfMeasures [i] [k].GetComponent<Note> ().GetComponent<SpriteRenderer> ().color = c;
+							}
+							
 						}
 					}
 				}
