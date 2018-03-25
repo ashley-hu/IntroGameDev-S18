@@ -60,7 +60,8 @@ public class Note : MonoBehaviour {
 				//Debug.Log ("Miss");
 				damageImage.color = new Color (1f, 0f, 0f, 0.8f); //image color is set to red
 				GameManager.combo = 0;
-				missText.GetComponent<Text> ().text = "Miss";
+				//missText.GetComponent<Text> ().text = "Miss";
+				RankingTextController.CreateDamageText ("MISS", 1);
 				GameManager.playerCurrHealth -= SpawnNote.bossDamage; //health is subtracted by amount of boss damage
 				if (healthSlider.GetComponent<Slider> ().value > 0) { //if playerHealh is greater than 0
 					healthSlider.GetComponent<Slider> ().value -= SpawnNote.bossDamage; //subtract health from damage
