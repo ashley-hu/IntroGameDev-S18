@@ -53,21 +53,22 @@ public class BossMovement : MonoBehaviour {
 	void Update () {
 		//if the boss is still alive, move the boss to the right and reverse if position is greater than 30, vice versa
 		if (GameManager.bossCurrHealth > 0) {
-//			 bossImage.position -= Vector3.up * Time.deltaTime * 5 * reverse;
-//			if (bossImage.localPosition.x > 50) { //move right then reverse
-//				reverse = -1;
-//				img.sprite = leftImage;
-//			} else if (bossImage.localPosition.x < -50) { //move left then reverse 
-//				reverse = 1;
-//				img.sprite = rightImage;
-//			}
-			if (bossImage.localPosition.y > 200) { //move right then reverse
+			bossImage.localPosition += Vector3.right * Time.deltaTime * 5 * reverse;
+			Debug.Log ("bossImage " + bossImage.localPosition);
+			if (bossImage.localPosition.x > -380) { //move right then reverse
 				reverse = -1;
 				//img.sprite = leftImage;
-			} else if (bossImage.localPosition.y < 235) { //move left then reverse 
+			} else if (bossImage.localPosition.x < -420) { //move left then reverse 
 				reverse = 1;
 				//img.sprite = rightImage;
 			}
+//			if (bossImage.localPosition.y > 200) { //move right then reverse
+//				reverse = -1;
+//				//img.sprite = leftImage;
+//			} else if (bossImage.localPosition.y < 235) { //move left then reverse 
+//				reverse = 1;
+//				//img.sprite = rightImage;
+//			}
 
 		} else {
 			//fade the boss out if the boss health reaches 0

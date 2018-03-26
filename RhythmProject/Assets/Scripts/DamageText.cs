@@ -28,7 +28,7 @@ public class DamageText : MonoBehaviour {
 
 	//Set text of the animation and font size
 	public void SetText(string txt){
-		damageText.fontSize = 30;
+		damageText.fontSize = 60;
 		damageText.text = txt;
 	}
 }

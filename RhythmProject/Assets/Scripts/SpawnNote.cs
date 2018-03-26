@@ -47,11 +47,16 @@ public class SpawnNote : MonoBehaviour {
 
 	public static bool endOfSong; 
 	private bool startSpawning;
+//	public Animation fireSpit;
 //	private float alphaLevel;
+
+	private Animator fireAnimationClip;
+	//private Animation myAnimation;
 
 	//get audio source component
 	void Awake() {
 		songSource = GetComponent<AudioSource>();
+		fireAnimationClip = GetComponent<Animator> ();
 	}
 
 	// Use this for initialization
@@ -104,6 +109,8 @@ public class SpawnNote : MonoBehaviour {
 			timeDurationOfBeat = bpm / 60 / 4; //the number of notes per beat
 			currentBeat = 2; //the current beat starts at 2 s
 		}
+
+		//FireSpit.fireAnimationClip.Play ("spitFire");
 	}
 
 	//Parses text file
@@ -216,7 +223,7 @@ public class SpawnNote : MonoBehaviour {
 							//Debug.Log ("POSition " + arrayOfMeasures [i][k].GetComponent<Note> ().transform.position);
 							//Debug.Log ("Second Pos: " + arrayOfMeasures [i][k].GetComponent<Note> ().destinationColumn);
 							arrayOfMeasures [i][k].GetComponent<Note> ().transform.position = 
-								Vector3.MoveTowards(arrayOfMeasures [i][k].GetComponent<Note> ().transform.position, new Vector3(arrayOfMeasures [i][k].GetComponent<Note> ().destinationColumn,2.6f,0), Time.deltaTime * speed);
+								Vector3.MoveTowards(arrayOfMeasures [i][k].GetComponent<Note> ().transform.position, new Vector3(arrayOfMeasures [i][k].GetComponent<Note> ().destinationColumn,2.6f,0), Time.deltaTime * speed * 1.5f);
 						}
 						if (arrayOfMeasures [i] [k].GetComponent<Note> ().GetComponent<SpriteRenderer> ().color.a < 1) {
 							Color c = arrayOfMeasures [i] [k].GetComponent<Note> ().GetComponent<SpriteRenderer> ().color;
