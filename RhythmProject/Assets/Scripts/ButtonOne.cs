@@ -70,7 +70,6 @@ public class ButtonOne : MonoBehaviour {
 				GameManager.bossCurrHealth -= 5;
 				badGoodPerfectText.GetComponent<Text> ().text = "";
 				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer>().color;
-				//bossIm.color = new Color(1, 0, 0, 0.2f);
 				if (GameManager.bossCurrHealth > 0) {
 					DamageTextController.CreateDamageText ("5", 1);
 				}
@@ -79,11 +78,6 @@ public class ButtonOne : MonoBehaviour {
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 5;
 				}
-//				if (BossMovement.moveLeft == true) {
-//					BossMovement.anim.SetBool ("isLeftHit", true);
-//				} else {
-//					BossMovement.anim.SetBool ("isRightHit", true);
-//				}
 				Destroy (coll.gameObject);
 			}
 			//great above
@@ -104,11 +98,6 @@ public class ButtonOne : MonoBehaviour {
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 10;
 				}
-//				if (BossMovement.moveLeft == true) {
-//					BossMovement.anim.SetBool ("isLeftHit", true);
-//				} else {
-//					BossMovement.anim.SetBool ("isRightHit", true);
-//				}
 				Destroy (coll.gameObject);
 			}
 			//perfect
@@ -129,11 +118,6 @@ public class ButtonOne : MonoBehaviour {
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 20;
 				}
-//				if (BossMovement.moveLeft == true) {
-//					BossMovement.anim.SetBool ("isLeftHit", true);
-//				} else {
-//					BossMovement.anim.SetBool ("isRightHit", true);
-//				}
 				Destroy (coll.gameObject);
 			}
 			//great below
@@ -145,7 +129,6 @@ public class ButtonOne : MonoBehaviour {
 				GameManager.bossCurrHealth -= 10;
 				badGoodPerfectText.GetComponent<Text> ().text = "";
 				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
-				//bossIm.color = new Color(1, 0, 0);
 				if (GameManager.bossCurrHealth > 0) {
 					DamageTextController.CreateDamageText ("10", 1);
 				}
@@ -154,11 +137,6 @@ public class ButtonOne : MonoBehaviour {
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 10;
 				}
-//				if (BossMovement.moveLeft == true) {
-//					//BossMovement.anim.SetBool ("isLeftHit", true);
-//				} else {
-//					//BossMovement.anim.SetBool ("isRightHit", true);
-//				}
 				Destroy (coll.gameObject);
 			} 
 			//bad below
@@ -179,13 +157,6 @@ public class ButtonOne : MonoBehaviour {
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 5;
 				}
-//				if (BossMovement.moveLeft == true) {
-//					//Debug.Log ("?????");
-//					//BossMovement.anim.SetBool ("isLeftHit", true);
-//				} else {
-//					//BossMovement.anim.SetBool ("isRightHit", true);
-//					//Debug.Log ("?????");
-//				}
 				Destroy (coll.gameObject);
 			}
 		} 

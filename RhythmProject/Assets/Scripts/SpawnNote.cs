@@ -47,11 +47,8 @@ public class SpawnNote : MonoBehaviour {
 
 	public static bool endOfSong; 
 	private bool startSpawning;
-//	public Animation fireSpit;
-//	private float alphaLevel;
 
 	private Animator fireAnimationClip;
-	//private Animation myAnimation;
 
 	//get audio source component
 	void Awake() {
@@ -98,19 +95,14 @@ public class SpawnNote : MonoBehaviour {
 			songSource.PlayScheduled (initTime + 8.0f);
 
 			beginningTimer += Time.deltaTime;
-			Debug.Log("beginning timer: "+ beginningTimer);
 			if (beginningTimer <= 4.0f) {
 				startSpawning = true;
-				//StartSpawn();
-				Debug.Log("Start spawning: ");
 			}
 
 			speed = (spawnHeight + 4.0f) / 4.0f; //determine speed of notes
 			timeDurationOfBeat = bpm / 60 / 4; //the number of notes per beat
 			currentBeat = 2; //the current beat starts at 2 s
 		}
-
-		//FireSpit.fireAnimationClip.Play ("spitFire");
 	}
 
 	//Parses text file
@@ -128,17 +120,6 @@ public class SpawnNote : MonoBehaviour {
 					GameObject newNote = Instantiate (note, new Vector3 (-3.05f, spawnHeight, 0), transform.rotation);
 					newNote.GetComponent<Note> ().move = false; //set move to false 
 					newNote.GetComponent<Note>().column = a;
-
-//					if (column == 0) {
-//						destinationColumn = -1.7f;
-//					} else if (column == 1) {
-//						destinationColumn = -0.565f;
-//					} else if (column == 2) {
-//						destinationColumn = 0.565f;
-//					} else if (column == 3) {
-//						destinationColumn = 1.7f;
-//					}
-//					Debug.Log ("Here: " + column + " " + "There " + destinationColumn);
 
 					if (a == 0) {
 						newNote.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 0); //if column is 0, set note color to red
@@ -175,10 +156,8 @@ public class SpawnNote : MonoBehaviour {
 	void Update () {
 		if (startSpawning){
 			StartSpawn();
-			//startSpawning = false;
 		}
 		songPosition = (float)(AudioSettings.dspTime - initTime - 2.0f);
-		//Debug.Log ("SongPosition: " + songPosition + "CurrentBeat and Time: " + (currentBeat + timeDurationOfBeat));
 		if (songPosition > currentBeat + timeDurationOfBeat) {
 			if (arrayOfMeasures.Count > 0) {
 				List<GameObject> result = arrayOfMeasures [arrayOfMeasures.Count - 1];
@@ -198,13 +177,7 @@ public class SpawnNote : MonoBehaviour {
 		if (hasSpawned) {
 			arrayOfMeasures.Remove (arrayOfMeasures [arrayOfMeasures.Count - 1]);
 			hasSpawned = false;
-		//	FireSpit.setFire = true;
-//			Debug.Log ("FireSpit.setFire " + FireSpit.setFire);
-//			Debug.Log ("Bruh");
-		} else {
-			//FireSpit.setFire = false;
 		}
-			
 		if (!songSource.isPlaying && endOfSong) {
 			if (SceneManager.GetActiveScene ().buildIndex == 1) {
 				endOfSong = false;
@@ -216,12 +189,9 @@ public class SpawnNote : MonoBehaviour {
 	public void StartSpawn(){
 		for (int i = 0; i < arrayOfMeasures.Count; i++) {
 			for (int k = 0; k < arrayOfMeasures [i].Count; k++) {
-				//Debug.Log (" DJLAKWDWD: " + arrayOfMeasures [i] [k].transform.position);
 				if ( arrayOfMeasures [i] [k].gameObject != null) {
 					if (arrayOfMeasures [i] [k].GetComponent<Note> () != null) {
 						if (arrayOfMeasures [i] [k].GetComponent<Note> ().transform.position.x <= arrayOfMeasures [i][k].GetComponent<Note> ().destinationColumn) {
-							//Debug.Log ("POSition " + arrayOfMeasures [i][k].GetComponent<Note> ().transform.position);
-							//Debug.Log ("Second Pos: " + arrayOfMeasures [i][k].GetComponent<Note> ().destinationColumn);
 							arrayOfMeasures [i][k].GetComponent<Note> ().transform.position = 
 								Vector3.MoveTowards(arrayOfMeasures [i][k].GetComponent<Note> ().transform.position, new Vector3(arrayOfMeasures [i][k].GetComponent<Note> ().destinationColumn,2.6f,0), Time.deltaTime * speed * 1.5f);
 						}

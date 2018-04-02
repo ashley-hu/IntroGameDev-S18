@@ -11,29 +11,6 @@ using UnityEngine.UI;
  * */
 public class BossMovement : MonoBehaviour {
 
-//	public static Animator anim;
-//	public static bool moveLeft;
-//	public static bool moveRight;
-//
-//	void Start(){
-//		anim = GetComponent<Animator> ();
-//		anim.SetBool ("isLeftHit", false);
-//		anim.SetBool ("isRightHit", false);
-//	}
-//
-//	void Update(){
-//		float x = anim.GetCurrentAnimatorStateInfo(0).normalizedTime;
-//		//Debug.Log (x);
-//		if (x >= 0.265 && x <= 0.744) {
-//			moveLeft = true;
-//			moveRight = false;
-//		} else {
-//			moveRight = true;
-//			moveLeft = false;
-//		}
-//	}
-
-
 	RectTransform bossImage;
 	float reverse;
 	Image img;

@@ -82,8 +82,6 @@ public class GameManager : MonoBehaviour {
 				bossHealthText.GetComponent<Text> ().text = bossCurrHealth.ToString () + "/" + bossFullHealth.ToString ();
 			} else {
 				bossHealthText.GetComponent<Text> ().text = "DEFEATED";
-				//bonusText.GetComponent<Text> ().text = "BONUS";
-				//bonusText.GetComponent<Text> ().CrossFadeAlpha (0, 2000, false);
 				Color c = bonusText.GetComponent<Text>().color;
 				c.a += 0.01f;
 				bonusText.GetComponent<Text>().color = c;
@@ -96,7 +94,6 @@ public class GameManager : MonoBehaviour {
 			} else {
 				SpawnNote.songSource.Stop (); //if player health reaches 0, stop the song
 				SpawnNote.endOfSong = true; //set endOfSong to true
-				//playerHealthText.GetComponent<Text> ().text = 0 + "/" + playerFullHealth.ToString ();
 			}
 		}
 	}
@@ -109,6 +106,5 @@ public class GameManager : MonoBehaviour {
 		scoreText.GetComponent<Text> ().text = "";
 		bossHealthText.GetComponent<Text> ().text = "";
 		playerHealthText.GetComponent<Text> ().text = "";
-		//bonusText.GetComponent<Text> ().text = "";
 	}
 }
