@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour {
 	private GameObject bossHealthText;
 	private GameObject playerHealthText;
 	public static int fileNumber;
+	public static int totalBad;
+	public static int totalGood;
+	public static int totalPerfect;
 
 	//get the referenced game objects
 	void Awake(){
@@ -102,6 +105,9 @@ public class GameManager : MonoBehaviour {
 	public void Reset(){
 		combo = 0;
 		score = 0;
+		totalBad = 0;
+		totalGood = 0;
+		totalPerfect = 0;
 		comboText.GetComponent<Text> ().text = "";
 		scoreText.GetComponent<Text> ().text = "";
 		bossHealthText.GetComponent<Text> ().text = "";

@@ -71,6 +71,7 @@ public class ButtonTwo : MonoBehaviour {
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 5;
 				}
+				GameManager.totalBad++;
 				Destroy (coll.gameObject);
 			}
 			//great above
@@ -88,6 +89,7 @@ public class ButtonTwo : MonoBehaviour {
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 10;
 				}
+				GameManager.totalGreat++;
 				Destroy (coll.gameObject);
 			}
 			//perfect
@@ -105,6 +107,7 @@ public class ButtonTwo : MonoBehaviour {
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 20;
 				}
+				GameManager.totalPerfect++;
 				Destroy (coll.gameObject);
 			}
 			//great below
@@ -122,6 +125,7 @@ public class ButtonTwo : MonoBehaviour {
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 10;
 				}
+				GameManager.totalGreat++;
 				Destroy (coll.gameObject);
 			} 
 			//bad below
@@ -139,6 +143,7 @@ public class ButtonTwo : MonoBehaviour {
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 5;
 				}
+				GameManager.totalBad++;
 				Destroy (coll.gameObject);
 			}
 		}
