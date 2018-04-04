@@ -16,13 +16,13 @@ public class RankingText : MonoBehaviour {
 		Destroy (gameObject, clipInfo [0].clip.length);
 		//get reference to text from animator 
 		rankingText = animator.GetComponent<Text> ();
-		Debug.Log ("Ranking Text: "+rankingText);       
+		//Debug.Log ("Ranking Text: "+rankingText);       
 	}
 
 	//Set text of the animation and font size
 	public void SetText(string txt){
 		rankingText.fontSize = 60;
 		rankingText.text = txt;
-		Debug.Log ("TEXT: " + txt);
+		//Debug.Log ("TEXT: " + txt);
 	}
 }

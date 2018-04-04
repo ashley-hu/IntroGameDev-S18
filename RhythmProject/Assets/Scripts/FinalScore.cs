@@ -61,28 +61,31 @@ public class FinalScore : MonoBehaviour {
 			letterScore.GetComponent<Text> ().text = finalScore;
 		}
 
+		Debug.Log ("GameManager adkajwhdawd " + GameManager.combo);
+		Debug.Log ("Total Great: " + GameManager.totalGreat);
+
 		if (maxCombo != null) {
-			maxCombo = GetComponent<Text> ().text = GameManager.combo.ToString ();
+			maxCombo.GetComponent<Text> ().text = "Combo: " + GameManager.combo;
 		}
 
 		if (maxScore != null) {
-			maxScore = GetComponent<Text> ().text = GameManager.score.ToString ();
+			maxScore.GetComponent<Text> ().text = "Score: " + GameManager.score;
 		}
 
 		if (numOfBad != null) {
-			//numOfBad = GetComponent<Text> ().text = ;
+			numOfBad.GetComponent<Text> ().text = "Bad: " + GameManager.totalBad;
 		}
 
 		if (numOfMiss != null) {
-			numOfMiss = GetComponent<Text> ().text = Note.missCounter.ToString();
+			numOfMiss.GetComponent<Text> ().text = "Miss: " + Note.missCounter;
 		}
 
 		if (numOfGood != null) {
-			//numOfGood = GetComponent<Text> ().text;
+			numOfGood.GetComponent<Text> ().text = "Great: " + GameManager.totalGreat;
 		}
 
 		if (numOfPerf != null) {
-			//numOfPerf = GetComponent<Text> ().text;
+			numOfPerf. GetComponent<Text> ().text = "Perfect: " + GameManager.totalPerfect;
 		}
 	}
 }

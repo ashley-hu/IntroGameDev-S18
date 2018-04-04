@@ -22,7 +22,7 @@ public class RankingTextController : MonoBehaviour {
 	public static void CreateDamageText(string txt, int value){
 		RankingText instance = Instantiate (rankingScoreText);
 
-		Debug.Log ("Instance and Txt: " + txt + " " + instance);
+		//Debug.Log ("Instance and Txt: " + txt + " " + instance);
 
 		if (bossParent == null) {
 			bossParent = GameObject.FindWithTag ("Canvas2");
