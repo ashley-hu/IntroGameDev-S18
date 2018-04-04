@@ -61,9 +61,6 @@ public class FinalScore : MonoBehaviour {
 			letterScore.GetComponent<Text> ().text = finalScore;
 		}
 
-		Debug.Log ("GameManager adkajwhdawd " + GameManager.combo);
-		Debug.Log ("Total Great: " + GameManager.totalGreat);
-
 		if (maxCombo != null) {
 			maxCombo.GetComponent<Text> ().text = "Combo: " + GameManager.combo;
 		}
