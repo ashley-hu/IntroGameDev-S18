@@ -12,14 +12,21 @@ using UnityEngine.UI;
 
 public class SongSelection : MonoBehaviour {
 
-	//0 - SelectMode
-	//1 - RhythmPrototype
-	//2 - GameOver
+	//0 - StartScreen
+	//1 - SelectMode
+	//2 - RhythmPrototype
+	//3 - GameOver
+
+	public void LoadSelectScene(){
+		if (SceneManager.GetActiveScene ().buildIndex == 0) {
+			SceneManager.LoadScene ("SelectMode"); 
+		}
+	}
 
 	//Game scene will load and file number is set to 1
 	//filenumber helps signal which resources to load in SpawnNote class
 	public void LoadSongOne(){
-		if (SceneManager.GetActiveScene ().buildIndex == 0) {
+		if (SceneManager.GetActiveScene ().buildIndex == 1) {
 			GameManager.fileNumber = 1;
 			SceneManager.LoadScene ("RhythmPrototype"); 
 		}
