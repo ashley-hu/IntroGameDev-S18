@@ -15,6 +15,7 @@ using UnityEngine.UI;
  * */
 public class ButtonOne : MonoBehaviour {
 
+	public ParticleSystem particles;
 
 	public static Animator anim;
 	private GameObject buttonC;
@@ -64,6 +65,7 @@ public class ButtonOne : MonoBehaviour {
 			//bad above
 			if ((coll.gameObject.transform.position.y >= -3.75f && coll.gameObject.transform.position.y < -3.0f) && hit) {
 				Debug.Log ("Bad");
+				particles.Play ();
 				anim.SetBool ("firstButtonPressed", true);
 				GameManager.combo = 0;
 				GameManager.score += 5;
@@ -84,6 +86,7 @@ public class ButtonOne : MonoBehaviour {
 			//great above
 			else if ((coll.gameObject.transform.position.y >= -3.95f && coll.gameObject.transform.position.y < -3.75f) && hit) {
 				Debug.Log ("Great");
+				particles.Play();
 				anim.SetBool ("firstButtonPressed", true);
 				GameManager.combo += 1;
 				GameManager.score += 10;
@@ -105,6 +108,7 @@ public class ButtonOne : MonoBehaviour {
 			//perfect
 			else if (coll.gameObject.transform.position.y >= -4.05f && coll.gameObject.transform.position.y < -3.95f && hit) {
 				Debug.Log ("Perfect");
+				particles.Play();
 				anim.SetBool ("firstButtonPressed", true);
 				GameManager.combo += 1;
 				GameManager.score += 20;
@@ -126,6 +130,7 @@ public class ButtonOne : MonoBehaviour {
 			//great below
 			else if ((coll.gameObject.transform.position.y >= -4.25f && coll.gameObject.transform.position.y < -4.05f) && hit) {
 				Debug.Log ("Great");
+				particles.Play ();
 				anim.SetBool ("firstButtonPressed", true);
 				GameManager.combo += 1;
 				GameManager.score += 10;
@@ -146,6 +151,7 @@ public class ButtonOne : MonoBehaviour {
 			//bad below
 			else if ((coll.gameObject.transform.position.y > -5.0f && coll.gameObject.transform.position.y < -4.25f) && hit) {
 				Debug.Log ("Bad");
+				particles.Play ();
 				anim.SetBool ("firstButtonPressed", true);
 				GameManager.combo = 0;
 				GameManager.score += 5;

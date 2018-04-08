@@ -179,7 +179,7 @@ public class SpawnNote : MonoBehaviour {
 			hasSpawned = false;
 		}
 		if (!songSource.isPlaying && endOfSong) {
-			if (SceneManager.GetActiveScene ().buildIndex == 1) {
+			if (SceneManager.GetActiveScene ().buildIndex == 2) {
 				endOfSong = false;
 				SceneManager.LoadScene ("GameOver");
 			}

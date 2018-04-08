@@ -42,7 +42,7 @@ public class SongSelection : MonoBehaviour {
 
 	//When game is done, return user to the Select Song screen
 	public void ReturnToSelectScreen(){
-		if (SceneManager.GetActiveScene ().buildIndex == 2) {
+		if (SceneManager.GetActiveScene ().buildIndex == 3) {
 			GameManager.fileNumber = 0; //set to 0 so no resources are loaded
 			SceneManager.LoadScene ("SelectMode");
 		}

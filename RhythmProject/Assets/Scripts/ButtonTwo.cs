@@ -15,6 +15,8 @@ using UnityEngine.UI;
  * */
 public class ButtonTwo : MonoBehaviour {
 
+	public ParticleSystem particles;
+
 	private GameObject buttonV;
 	private GameObject enemyHealth;
 	private GameObject badGoodPerfectText;
@@ -59,6 +61,7 @@ public class ButtonTwo : MonoBehaviour {
 			//bad above
 			if ((coll.gameObject.transform.position.y >= -3.75f && coll.gameObject.transform.position.y < -3.0f) && hit) {
 				Debug.Log ("Bad");
+				particles.Play ();
 				GameManager.combo = 0;
 				GameManager.score += 5;
 				GameManager.bossCurrHealth -= 5;
@@ -77,6 +80,7 @@ public class ButtonTwo : MonoBehaviour {
 			//great above
 			else if ((coll.gameObject.transform.position.y >= -3.95f && coll.gameObject.transform.position.y < -3.75f) && hit) {
 				Debug.Log ("Great");
+				particles.Play ();
 				GameManager.combo += 1;
 				GameManager.score += 10;
 				GameManager.bossCurrHealth -= 10;
@@ -95,6 +99,7 @@ public class ButtonTwo : MonoBehaviour {
 			//perfect
 			else if (coll.gameObject.transform.position.y >= -4.05f && coll.gameObject.transform.position.y < -3.95f && hit) {
 				Debug.Log ("Perfect");
+				particles.Play ();
 				GameManager.combo += 1;
 				GameManager.score += 20;
 				GameManager.bossCurrHealth -= 20;
@@ -113,6 +118,7 @@ public class ButtonTwo : MonoBehaviour {
 			//great below
 			else if ((coll.gameObject.transform.position.y >= -4.25f && coll.gameObject.transform.position.y < -4.05f) && hit) {
 				Debug.Log ("Great");
+				particles.Play ();
 				GameManager.combo += 1;
 				GameManager.score += 10;
 				GameManager.bossCurrHealth -= 10;
@@ -131,6 +137,7 @@ public class ButtonTwo : MonoBehaviour {
 			//bad below
 			else if ((coll.gameObject.transform.position.y > -5.0f && coll.gameObject.transform.position.y < -4.25f) && hit) {
 				Debug.Log ("Bad");
+				particles.Play ();
 				GameManager.combo = 0;
 				GameManager.score += 5;
 				GameManager.bossCurrHealth -= 5;
