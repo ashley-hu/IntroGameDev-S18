@@ -56,6 +56,8 @@ public class ButtonThree : MonoBehaviour {
 	// great gets a score of +10 and =10 for boss health
 	// perfect gets a score of +20 and -20 for boss health
 	//after note is hit, it is destroyed 
+	// create a particle effect when note collides
+	// show Damage text on boss and ranking text in center of screen
 	void OnCollisionStay2D(Collision2D coll) {
 		if (coll.gameObject.tag == "Note") {
 			//bad above

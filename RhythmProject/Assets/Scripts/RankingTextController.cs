@@ -27,20 +27,7 @@ public class RankingTextController : MonoBehaviour {
 		if (bossParent == null) {
 			bossParent = GameObject.FindWithTag ("Canvas2");
 		}
-		//Debug.Log (bossParent);
-		//Set parent to Boss Image
-		//instance.transform.SetParent (bossParent.transform, false);
-		//Move the text slightly higher and to the right relative to parent
-		//instance.transform.position = bossParent.transform.position;
-	//	instance.transform.position = new Vector3(0, -50, 0);
-	
-	//	Debug.Log ("Boss pArent position " + bossParent.transform.position);
-	//	Debug.Log ("Instance " + instance.transform.position);
-		//set the text
 
-	//	instance.transform.SetParent (bossParent.transform , false);
-		//Move the text slightly higher and to the right relative to parent
-	//	instance.transform.position = bossParent.transform.position;
 		instance.transform.SetParent (bossParent.transform , false);
 		instance.transform.position = bossParent.transform.position;
 

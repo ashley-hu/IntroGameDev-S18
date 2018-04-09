@@ -8,18 +8,31 @@ using UnityEngine.UI;
  * SongSelection class
  * - allows user to select song (currently only have 1 song) 
  * - after selecting, game screen will load with the proper resources
+ * - wait until the sound for button is done loading before loading new scene
  * */
 
 public class SongSelection : MonoBehaviour {
+
+	public AudioClip clickSound;
+	private AudioSource audioSource;
+	private bool soundIsDone = false;
 
 	//0 - StartScreen
 	//1 - SelectMode
 	//2 - RhythmPrototype
 	//3 - GameOver
 
+	public void Awake () {
+		audioSource = GetComponent<AudioSource>();
+	}
+
+
 	public void LoadSelectScene(){
 		if (SceneManager.GetActiveScene ().buildIndex == 0) {
-			SceneManager.LoadScene ("SelectMode"); 
+			if (!soundIsDone) {
+				StartCoroutine(DelayedLoad());
+				soundIsDone = true; 
+			}
 		}
 	}
 
@@ -28,7 +41,10 @@ public class SongSelection : MonoBehaviour {
 	public void LoadSongOne(){
 		if (SceneManager.GetActiveScene ().buildIndex == 1) {
 			GameManager.fileNumber = 1;
-			SceneManager.LoadScene ("RhythmPrototype"); 
+			if (!soundIsDone) {
+				StartCoroutine(DelayedLoadOne());
+				soundIsDone = true;
+			}
 		}
 	}
 
@@ -44,7 +60,28 @@ public class SongSelection : MonoBehaviour {
 	public void ReturnToSelectScreen(){
 		if (SceneManager.GetActiveScene ().buildIndex == 3) {
 			GameManager.fileNumber = 0; //set to 0 so no resources are loaded
-			SceneManager.LoadScene ("SelectMode");
+			if (!soundIsDone) {
+				StartCoroutine(DelayedLoad());
+				soundIsDone = true;
+			}
 		}
 	}
+		
+	IEnumerator DelayedLoad(){
+		//Play the clip once
+		audioSource.PlayOneShot (clickSound);
+		//Wait until clip finish playing
+		yield return new WaitForSeconds (clickSound.length);  
+		SceneManager.LoadScene ("SelectMode");
+	}
+
+
+	IEnumerator DelayedLoadOne(){
+		//Play the clip once
+		audioSource.PlayOneShot (clickSound);
+		//Wait until clip finish playing
+		yield return new WaitForSeconds (clickSound.length);  
+		SceneManager.LoadScene ("RhythmPrototype"); 
+	}
+
 }

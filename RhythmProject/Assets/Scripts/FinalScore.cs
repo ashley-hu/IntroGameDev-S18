@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class FinalScore : MonoBehaviour {
 
+	//Show the scores when the game is over
+	//Scores include combo, letter score, number score, number of bad, great, miss and perfect
+
 	//30 notes 
 	//max score u can get ( 30 * 20 = 600) 
 

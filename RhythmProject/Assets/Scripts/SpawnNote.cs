@@ -94,7 +94,7 @@ public class SpawnNote : MonoBehaviour {
 			//songSource.PlayScheduled (initTime + 4.0f); //play after 4 seconds + the initial time
 			songSource.PlayScheduled (initTime + 8.0f);
 
-			beginningTimer += Time.deltaTime;
+			beginningTimer += Time.deltaTime; //in the first 4 seconds, spawn the notes from the dragon's mouth
 			if (beginningTimer <= 4.0f) {
 				startSpawning = true;
 			}
@@ -155,7 +155,7 @@ public class SpawnNote : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (startSpawning){
-			StartSpawn();
+			StartSpawn(); //spawn the notes out of the dragon's mouth
 		}
 		songPosition = (float)(AudioSettings.dspTime - initTime - 2.0f);
 		if (songPosition > currentBeat + timeDurationOfBeat) {
@@ -175,17 +175,19 @@ public class SpawnNote : MonoBehaviour {
 			currentBeat += timeDurationOfBeat;
 		}
 		if (hasSpawned) {
-			arrayOfMeasures.Remove (arrayOfMeasures [arrayOfMeasures.Count - 1]);
+			arrayOfMeasures.Remove (arrayOfMeasures [arrayOfMeasures.Count - 1]); //remove the notes from the array
 			hasSpawned = false;
 		}
 		if (!songSource.isPlaying && endOfSong) {
 			if (SceneManager.GetActiveScene ().buildIndex == 2) {
 				endOfSong = false;
-				SceneManager.LoadScene ("GameOver");
+				SceneManager.LoadScene ("GameOver"); //load the game over scene when song is done playing
 			}
 		}
 	}
 
+	//Shoot the balls out of dragon's mouth at start of game
+	//The ball will increase in size, move to position, and turn from transparent to solid color
 	public void StartSpawn(){
 		for (int i = 0; i < arrayOfMeasures.Count; i++) {
 			for (int k = 0; k < arrayOfMeasures [i].Count; k++) {
