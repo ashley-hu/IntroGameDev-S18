@@ -19,6 +19,8 @@ public class Note : MonoBehaviour {
 	public float destinationColumn;
 	public static float missCounter;
 
+	//screenshake:
+
 	// Use this for initialization
 	void Start () {
 		move = false; //initially set to false, will be set to true in SpawnNote 
@@ -43,6 +45,9 @@ public class Note : MonoBehaviour {
 					healthSlider.GetComponent<Slider> ().value -= SpawnNote.bossDamage; //subtract health from damage
 				}
 				Destroy (gameObject); //destroy the game object 
+
+				//Camera.main.GetComponent<scriptname>().publicshaketimer = however long you want itar Touch shake
+			//	Camera.main.transform.position = Camera.main.transform.position - Random.insideUnitCircle;
 			} else {
 				//clear the image color 
 				damageImage.color = Color.Lerp (damageImage.color, Color.clear, 20 * Time.deltaTime);
