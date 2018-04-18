@@ -19,6 +19,16 @@ TagManager:
   - DamageImage
   - Canvas
   - BossParent
+  - Canvas2
+  - Bonus
+  - Fire
+  - LetterScore
+  - MaxCombo
+  - MaxScore
+  - NumOfBad
+  - NumOfMiss
+  - NumOfGood
+  - NumOfPerf
   layers:
   - Default
   - TransparentFX

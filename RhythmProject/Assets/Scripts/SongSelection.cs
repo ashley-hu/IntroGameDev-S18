@@ -40,6 +40,7 @@ public class SongSelection : MonoBehaviour {
 	//filenumber helps signal which resources to load in SpawnNote class
 	public void LoadSongOne(){
 		if (SceneManager.GetActiveScene ().buildIndex == 1) {
+			Destroy (GameObject.Find("Audio"));
 			GameManager.fileNumber = 1;
 			if (!soundIsDone) {
 				StartCoroutine(DelayedLoadOne());
