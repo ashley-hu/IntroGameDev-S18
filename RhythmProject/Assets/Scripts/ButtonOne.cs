@@ -17,7 +17,6 @@ public class ButtonOne : MonoBehaviour {
 
 	public ParticleSystem particles;
 
-	public static Animator anim;
 	private GameObject buttonC;
 	private GameObject enemyHealth;
 	private GameObject badGoodPerfectText;
@@ -32,7 +31,6 @@ public class ButtonOne : MonoBehaviour {
 		hit = false;
 		enemyHealth = GameObject.FindWithTag ("Health");
 		badGoodPerfectText = GameObject.FindWithTag ("BadGoodPerfect");
-		anim = GetComponent<Animator> ();
 		bossIm = GameObject.FindWithTag ("BossParent").GetComponent<Image>();
 		//anim.SetBool ("firstButtonPressed", false);
 	}
@@ -68,7 +66,6 @@ public class ButtonOne : MonoBehaviour {
 			if ((coll.gameObject.transform.position.y >= -3.75f && coll.gameObject.transform.position.y < -3.0f) && hit) {
 				Debug.Log ("Bad");
 				particles.Play ();
-				anim.SetBool ("firstButtonPressed", true);
 				GameManager.combo = 0;
 				GameManager.score += 5;
 				GameManager.bossCurrHealth -= 5;
@@ -89,7 +86,6 @@ public class ButtonOne : MonoBehaviour {
 			else if ((coll.gameObject.transform.position.y >= -3.95f && coll.gameObject.transform.position.y < -3.75f) && hit) {
 				Debug.Log ("Great");
 				particles.Play();
-				anim.SetBool ("firstButtonPressed", true);
 				GameManager.combo += 1;
 				GameManager.score += 10;
 				GameManager.bossCurrHealth -= 10;
@@ -111,7 +107,6 @@ public class ButtonOne : MonoBehaviour {
 			else if (coll.gameObject.transform.position.y >= -4.05f && coll.gameObject.transform.position.y < -3.95f && hit) {
 				Debug.Log ("Perfect");
 				particles.Play();
-				anim.SetBool ("firstButtonPressed", true);
 				GameManager.combo += 1;
 				GameManager.score += 20;
 				GameManager.bossCurrHealth -= 20;
@@ -133,7 +128,6 @@ public class ButtonOne : MonoBehaviour {
 			else if ((coll.gameObject.transform.position.y >= -4.25f && coll.gameObject.transform.position.y < -4.05f) && hit) {
 				Debug.Log ("Great");
 				particles.Play ();
-				anim.SetBool ("firstButtonPressed", true);
 				GameManager.combo += 1;
 				GameManager.score += 10;
 				GameManager.bossCurrHealth -= 10;
@@ -154,7 +148,6 @@ public class ButtonOne : MonoBehaviour {
 			else if ((coll.gameObject.transform.position.y > -5.0f && coll.gameObject.transform.position.y < -4.25f) && hit) {
 				Debug.Log ("Bad");
 				particles.Play ();
-				anim.SetBool ("firstButtonPressed", true);
 				GameManager.combo = 0;
 				GameManager.score += 5;
 				GameManager.bossCurrHealth -= 5;
