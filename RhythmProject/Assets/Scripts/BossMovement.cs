@@ -16,6 +16,9 @@ public class BossMovement : MonoBehaviour {
 	Image img;
 	private float delayStart;
 	private bool hasDelayed;
+	public AudioClip audioSound;
+	private AudioSource audioSource;
+	private bool soundPlayed = false;
 	//public Sprite rightImage;
 	//public Sprite leftImage;
 
@@ -27,6 +30,7 @@ public class BossMovement : MonoBehaviour {
 		reverse = 1;
 		delayStart = 4f;
 		hasDelayed = false;
+		audioSource = GetComponent<AudioSource> ();
 		//img.sprite = rightImage;
 	}
 
@@ -34,15 +38,15 @@ public class BossMovement : MonoBehaviour {
 	void Update () {
 		if (!hasDelayed && GameManager.bossCurrHealth > 0) {
 			delayStart -= Time.deltaTime;
-			bossImage.localPosition += Vector3.up * Time.deltaTime * 30 * reverse;
+			bossImage.localPosition += Vector3.up * Time.deltaTime * 40 * reverse;
 			if (delayStart < 0) {
 				hasDelayed = true;
 				bossImage.localPosition = new Vector3 (-387, 254f, 0);
 			} else {
 				Debug.Log (bossImage.localPosition.y);
-				if (bossImage.localPosition.y > 260) {
+				if (bossImage.localPosition.y > 258) {
 					reverse = -1;
-				} else if (bossImage.localPosition.y < 240) {
+				} else if (bossImage.localPosition.y < 250) {
 					reverse = 1;
 				}
 			}	
@@ -68,7 +72,10 @@ public class BossMovement : MonoBehaviour {
 
 		} else if(hasDelayed && GameManager.bossCurrHealth <= 0){
 			//fade the boss out if the boss health reaches 0
-			Debug.Log("Fading");
+			if (!soundPlayed) {
+				audioSource.PlayOneShot (audioSound);
+				soundPlayed = true;
+			}
 			img.CrossFadeAlpha (0, 1, false);
 		}
 	}

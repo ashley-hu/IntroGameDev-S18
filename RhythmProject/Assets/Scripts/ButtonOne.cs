@@ -22,6 +22,9 @@ public class ButtonOne : MonoBehaviour {
 	private GameObject badGoodPerfectText;
 	private bool hit;
 	private Image bossIm;
+	public AudioClip audioClip1;
+	public AudioClip audioClip2;
+	private AudioSource audioSource;
 
 	// Use this for initialization
 	void Start () {
@@ -32,7 +35,7 @@ public class ButtonOne : MonoBehaviour {
 		enemyHealth = GameObject.FindWithTag ("Health");
 		badGoodPerfectText = GameObject.FindWithTag ("BadGoodPerfect");
 		bossIm = GameObject.FindWithTag ("BossParent").GetComponent<Image>();
-		//anim.SetBool ("firstButtonPressed", false);
+		audioSource = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -41,6 +44,7 @@ public class ButtonOne : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.C)) {
 			buttonC.GetComponent<SpriteRenderer> ().color = new Color(1.0F, 0, 0, 0.5F);
 			hit = true;
+			audioSource.PlayOneShot (audioClip2);
 		}
 		//if key is up, set solid color
 		if (Input.GetKeyUp (KeyCode.C)) {
@@ -66,11 +70,12 @@ public class ButtonOne : MonoBehaviour {
 			if ((coll.gameObject.transform.position.y >= -3.75f && coll.gameObject.transform.position.y < -3.0f) && hit) {
 				Debug.Log ("Bad");
 				particles.Play ();
+				audioSource.PlayOneShot (audioClip1);
 				GameManager.combo = 0;
 				GameManager.score += 5;
 				GameManager.bossCurrHealth -= 5;
 				badGoodPerfectText.GetComponent<Text> ().text = "";
-				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer>().color;
+				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
 				if (GameManager.bossCurrHealth > 0) {
 					DamageTextController.CreateDamageText ("5", 1);
 				}
@@ -85,13 +90,14 @@ public class ButtonOne : MonoBehaviour {
 			//great above
 			else if ((coll.gameObject.transform.position.y >= -3.95f && coll.gameObject.transform.position.y < -3.75f) && hit) {
 				Debug.Log ("Great");
-				particles.Play();
+				particles.Play ();
+				audioSource.PlayOneShot (audioClip1);
 				GameManager.combo += 1;
 				GameManager.score += 10;
 				GameManager.bossCurrHealth -= 10;
 				badGoodPerfectText.GetComponent<Text> ().text = "";
 				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
-				bossIm.color = new Color(1, 0, 0);
+				bossIm.color = new Color (1, 0, 0);
 				if (GameManager.bossCurrHealth > 0) {
 					DamageTextController.CreateDamageText ("10", 1);
 				}
@@ -106,7 +112,8 @@ public class ButtonOne : MonoBehaviour {
 			//perfect
 			else if (coll.gameObject.transform.position.y >= -4.05f && coll.gameObject.transform.position.y < -3.95f && hit) {
 				Debug.Log ("Perfect");
-				particles.Play();
+				particles.Play ();
+				audioSource.PlayOneShot (audioClip1);
 				GameManager.combo += 1;
 				GameManager.score += 20;
 				GameManager.bossCurrHealth -= 20;
@@ -128,6 +135,7 @@ public class ButtonOne : MonoBehaviour {
 			else if ((coll.gameObject.transform.position.y >= -4.25f && coll.gameObject.transform.position.y < -4.05f) && hit) {
 				Debug.Log ("Great");
 				particles.Play ();
+				audioSource.PlayOneShot (audioClip1);
 				GameManager.combo += 1;
 				GameManager.score += 10;
 				GameManager.bossCurrHealth -= 10;
@@ -148,6 +156,7 @@ public class ButtonOne : MonoBehaviour {
 			else if ((coll.gameObject.transform.position.y > -5.0f && coll.gameObject.transform.position.y < -4.25f) && hit) {
 				Debug.Log ("Bad");
 				particles.Play ();
+
 				GameManager.combo = 0;
 				GameManager.score += 5;
 				GameManager.bossCurrHealth -= 5;
@@ -165,6 +174,6 @@ public class ButtonOne : MonoBehaviour {
 				GameManager.totalBad++;
 				Destroy (coll.gameObject);
 			}
-		} 
+		}
 	}
 }

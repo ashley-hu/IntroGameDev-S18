@@ -22,6 +22,9 @@ public class ButtonFour : MonoBehaviour {
 	private bool hit;
 	private GameObject badGoodPerfectText;
 	private Image bossIm;
+	public AudioClip audioClip1;
+	public AudioClip audioClip2;
+	private AudioSource audioSource;
 
 	// Use this for initialization
 	void Start () {
@@ -32,6 +35,7 @@ public class ButtonFour : MonoBehaviour {
 		enemyHealth = GameObject.FindWithTag ("Health");
 		badGoodPerfectText = GameObject.FindWithTag ("BadGoodPerfect");
 		bossIm = GameObject.FindWithTag ("BossParent").GetComponent<Image>();
+		audioSource = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -40,6 +44,7 @@ public class ButtonFour : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.N)) {
 			buttonN.GetComponent<SpriteRenderer> ().color = new Color (0, 1.0f, 0, 0.3f);
 			hit = true;
+			audioSource.PlayOneShot (audioClip2);
 		}
 		//if key is up, set solid color
 		if (Input.GetKeyUp (KeyCode.N)) {
@@ -64,6 +69,7 @@ public class ButtonFour : MonoBehaviour {
 			if ((coll.gameObject.transform.position.y >= -3.75f && coll.gameObject.transform.position.y < -3.0f) && hit) {
 				Debug.Log ("Bad");
 				particles.Play ();
+				audioSource.PlayOneShot (audioClip1);
 				GameManager.combo = 0;
 				GameManager.score += 5;
 				GameManager.bossCurrHealth -= 5;
@@ -83,6 +89,7 @@ public class ButtonFour : MonoBehaviour {
 			else if ((coll.gameObject.transform.position.y >= -3.95f && coll.gameObject.transform.position.y < -3.75f) && hit) {
 				Debug.Log ("Great");
 				particles.Play ();
+				audioSource.PlayOneShot (audioClip1);
 				GameManager.combo += 1;
 				GameManager.score += 10;
 				GameManager.bossCurrHealth -= 10;
@@ -102,6 +109,7 @@ public class ButtonFour : MonoBehaviour {
 			else if (coll.gameObject.transform.position.y >= -4.05f && coll.gameObject.transform.position.y < -3.95f && hit) {
 				Debug.Log ("Perfect");
 				particles.Play ();
+				audioSource.PlayOneShot (audioClip1);
 				GameManager.combo += 1;
 				GameManager.score += 20;
 				GameManager.bossCurrHealth -= 20;
@@ -121,6 +129,7 @@ public class ButtonFour : MonoBehaviour {
 			else if ((coll.gameObject.transform.position.y >= -4.25f && coll.gameObject.transform.position.y < -4.05f) && hit) {
 				Debug.Log ("Great");
 				particles.Play ();
+				audioSource.PlayOneShot (audioClip1);
 				GameManager.combo += 1;
 				GameManager.score += 10;
 				GameManager.bossCurrHealth -= 10;
@@ -140,6 +149,7 @@ public class ButtonFour : MonoBehaviour {
 			else if ((coll.gameObject.transform.position.y > -5.0f && coll.gameObject.transform.position.y < -4.25f) && hit) {
 				Debug.Log ("Bad");
 				particles.Play ();
+				audioSource.PlayOneShot (audioClip1);
 				GameManager.combo = 0;
 				GameManager.score += 5;
 				GameManager.bossCurrHealth -= 5;
