@@ -66,7 +66,6 @@ public class SpawnNote : MonoBehaviour {
 
 		//if filenumber is selected to be 1 from the GameManager 
 		if (GameManager.fileNumber == 1) {
-			Debug.Log ("File 1");
 			//load the appropriate resources
 			songData = Resources.Load ("songOne") as TextAsset; 
 			songOne = Resources.Load<AudioClip> ("demo-2");

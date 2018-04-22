@@ -43,7 +43,6 @@ public class BossMovement : MonoBehaviour {
 				hasDelayed = true;
 				bossImage.localPosition = new Vector3 (-387, 254f, 0);
 			} else {
-				Debug.Log (bossImage.localPosition.y);
 				if (bossImage.localPosition.y > 258) {
 					reverse = -1;
 				} else if (bossImage.localPosition.y < 250) {

@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour {
 	public static int totalGreat;
 	public static int totalPerfect;
 	public static int biggestCombo;
+	public static bool slayedFirstBoss;
 
 	//get the referenced game objects
 	void Awake(){
@@ -56,8 +57,8 @@ public class GameManager : MonoBehaviour {
 
 //		Potential future implementation
 		if (fileNumber == 2) {
-			bossFullHealth = 200;
-			playerFullHealth = 150;
+			bossFullHealth = 300;
+			playerFullHealth = 100;
 		}
 
 		//set the current health to full health
@@ -92,6 +93,7 @@ public class GameManager : MonoBehaviour {
 				Color c = bonusText.GetComponent<Text>().color;
 				c.a += 0.01f;
 				bonusText.GetComponent<Text>().color = c;
+				slayedFirstBoss = true;
 			}
 		}
 

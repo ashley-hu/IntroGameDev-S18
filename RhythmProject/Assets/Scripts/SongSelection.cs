@@ -16,6 +16,7 @@ public class SongSelection : MonoBehaviour {
 	public AudioClip clickSound;
 	private AudioSource audioSource;
 	private bool soundIsDone = false;
+	public Button secondSongButton;
 
 	//0 - StartScreen
 	//1 - SelectMode
@@ -24,8 +25,16 @@ public class SongSelection : MonoBehaviour {
 
 	public void Awake () {
 		audioSource = GetComponent<AudioSource>();
+		secondSongButton = GetComponent<Button> ();
 	}
 
+	public void Update(){
+		if (secondSongButton != null && GameManager.slayedFirstBoss != null) {
+			if (secondSongButton.interactable == false && GameManager.slayedFirstBoss) {
+				secondSongButton.interactable = true;
+			}
+		}
+	}
 
 	public void LoadSelectScene(){
 		if (SceneManager.GetActiveScene ().buildIndex == 0) {
