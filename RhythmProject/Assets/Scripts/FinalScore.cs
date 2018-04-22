@@ -18,6 +18,7 @@ public class FinalScore : MonoBehaviour {
 	private GameObject numOfMiss;
 	private GameObject numOfGood;
 	private GameObject numOfPerf;
+	private GameObject textDescription;
 	private string finalScore;
 
 	// Use this for initialization
@@ -29,6 +30,7 @@ public class FinalScore : MonoBehaviour {
 		numOfMiss = GameObject.FindWithTag ("NumOfMiss");
 		numOfGood = GameObject.FindWithTag ("NumOfGood");
 		numOfPerf = GameObject.FindWithTag ("NumOfPerf");
+		textDescription = GameObject.FindWithTag ("Description");
 	}
 	
 	// Update is called once per frame
@@ -85,7 +87,19 @@ public class FinalScore : MonoBehaviour {
 		}
 
 		if (numOfPerf != null) {
-			numOfPerf. GetComponent<Text> ().text = "Perfect: " + GameManager.totalPerfect;
+			numOfPerf.GetComponent<Text> ().text = "Perfect: " + GameManager.totalPerfect;
+		}
+
+		if (textDescription != null) {
+			if (GameManager.playerCurrHealth > 0) {
+				if (GameManager.bossCurrHealth <= 0) {
+					textDescription.GetComponent<Text> ().text = "Congratulations\n You Slain The Dragon!!!";
+				} else if (GameManager.bossCurrHealth > 0) {
+					textDescription.GetComponent<Text> ().text = "Oh No!\n You Failed To Slay The Dragon!!!";
+				}
+			} else {
+				textDescription.GetComponent<Text> ().text = "RIP\n You Died!!!";
+			}
 		}
 	}
 }
