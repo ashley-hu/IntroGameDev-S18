@@ -17,6 +17,7 @@ public class SongSelection : MonoBehaviour {
 	private AudioSource audioSource;
 	private bool soundIsDone = false;
 	public Button secondSongButton;
+	private GameObject songTwoDescText;
 
 	//0 - StartScreen
 	//1 - SelectMode
@@ -25,13 +26,15 @@ public class SongSelection : MonoBehaviour {
 
 	public void Awake () {
 		audioSource = GetComponent<AudioSource>();
-		secondSongButton = GetComponent<Button> ();
+		songTwoDescText = GameObject.FindWithTag ("SongTwoDescription");
 	}
 
 	public void Update(){
 		if (secondSongButton != null && GameManager.slayedFirstBoss != null) {
+			Debug.Log("Hmm: " +GameManager.slayedFirstBoss);
 			if (secondSongButton.interactable == false && GameManager.slayedFirstBoss) {
 				secondSongButton.interactable = true;
+				Destroy (songTwoDescText);
 			}
 		}
 	}
