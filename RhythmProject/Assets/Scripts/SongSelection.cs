@@ -50,12 +50,16 @@ public class SongSelection : MonoBehaviour {
 	}
 
 //	Potential future implementation of 2nd song	
-//	public void LoadSongTwo(){	
-//		if (SceneManager.GetActiveScene ().buildIndex == 0) {
-//			GameManager.fileNumber = 2;
-//			SceneManager.LoadScene ("RhythmPrototype");
-//		}
-//	}
+	public void LoadSongTwo(){	
+		if (SceneManager.GetActiveScene ().buildIndex == 1) {
+			Destroy (GameObject.Find("Audio"));
+			GameManager.fileNumber = 2;
+			if (!soundIsDone) {
+				StartCoroutine(DelayedLoadOne());
+				soundIsDone = true;
+			}
+		}
+	}
 
 	//When game is done, return user to the Select Song screen
 	public void ReturnToSelectScreen(){

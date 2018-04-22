@@ -55,11 +55,10 @@ public class GameManager : MonoBehaviour {
 		}
 
 //		Potential future implementation
-//		if (fileNumber == 2) {
-//			bossFullHealth = 200;
-//			playerFullHealth = 150;
-//
-//		}
+		if (fileNumber == 2) {
+			bossFullHealth = 200;
+			playerFullHealth = 150;
+		}
 
 		//set the current health to full health
 		bossCurrHealth = bossFullHealth;

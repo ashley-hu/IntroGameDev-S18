@@ -68,7 +68,7 @@ public class SpawnNote : MonoBehaviour {
 		if (GameManager.fileNumber == 1) {
 			Debug.Log ("File 1");
 			//load the appropriate resources
-			songData = Resources.Load ("sampletext") as TextAsset; 
+			songData = Resources.Load ("songOne") as TextAsset; 
 			songOne = Resources.Load<AudioClip> ("demo-2");
 			//set the sliders to the health of boss and player from GameManager
 			bossHealthBar.maxValue = GameManager.bossFullHealth;
@@ -78,9 +78,15 @@ public class SpawnNote : MonoBehaviour {
 		}
 
 //		Potential future implementation of 2nd song		
-//		if (GameManager.fileNumber == 2) {
-//			Debug.Log ("Load 2nd files");
-//		}
+		if (GameManager.fileNumber == 2) {
+			Debug.Log ("Load 2nd files");
+			songData = Resources.Load ("songTwo") as TextAsset; 
+			songOne = Resources.Load<AudioClip> ("demo-3");
+			//set the sliders to the health of boss and player from GameManager
+			bossHealthBar.maxValue = GameManager.bossFullHealth;
+			bossHealthBar.value = GameManager.bossFullHealth;
+			playerHealthBar.value = GameManager.playerFullHealth;
+		}
 
 		//if text and song is not null, parse the text file and parse song
 		if (songData && songOne != null) {
