@@ -67,7 +67,7 @@ public class FinalScore : MonoBehaviour {
 		}
 
 		if (maxCombo != null) {
-			maxCombo.GetComponent<Text> ().text = "Combo: " + GameManager.combo;
+			maxCombo.GetComponent<Text> ().text = "Combo: " + GameManager.biggestCombo;
 		}
 
 		if (maxScore != null) {

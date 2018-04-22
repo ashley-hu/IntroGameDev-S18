@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour {
 	public static int totalBad;
 	public static int totalGreat;
 	public static int totalPerfect;
+	public static int biggestCombo;
 
 	//get the referenced game objects
 	void Awake(){
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 		DamageTextController.Initialize ();
 		RankingTextController.Initialize ();
+		biggestCombo = 0;
 
 		//if number is 1, set the playerhealth and bosshealth to 100 and 150 respectively
 		if (fileNumber == 1) {
@@ -69,6 +71,9 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (comboText != null) {
+			if (combo > biggestCombo) {
+				biggestCombo = combo;
+			}
 			if (combo != 0) {
 				comboText.GetComponent<Text> ().text = "Combo " + combo.ToString ();
 			} else {
@@ -108,6 +113,7 @@ public class GameManager : MonoBehaviour {
 		totalBad = 0;
 		totalGreat = 0;
 		totalPerfect = 0;
+		biggestCombo = 0;
 		comboText.GetComponent<Text> ().text = "";
 		scoreText.GetComponent<Text> ().text = "";
 		bossHealthText.GetComponent<Text> ().text = "";
