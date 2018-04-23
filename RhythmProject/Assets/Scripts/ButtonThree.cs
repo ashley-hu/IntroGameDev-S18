@@ -21,7 +21,6 @@ public class ButtonThree : MonoBehaviour {
 	private GameObject buttonB;
 	private GameObject enemyHealth;
 	private bool hit;
-	private GameObject badGoodPerfectText;
 	private Image bossIm;
 	public AudioClip audioClip1;
 	public AudioClip audioClip2;
@@ -34,7 +33,6 @@ public class ButtonThree : MonoBehaviour {
 		}
 		hit = false;
 		enemyHealth = GameObject.FindWithTag ("Health");
-		badGoodPerfectText = GameObject.FindWithTag ("BadGoodPerfect");
 		bossIm = GameObject.FindWithTag ("BossParent").GetComponent<Image>();
 		audioSource = GetComponent<AudioSource> ();
 	}
@@ -66,17 +64,17 @@ public class ButtonThree : MonoBehaviour {
 	// after note is hit, it is destroyed 
 	// create a particle effect when note collides
 	// show Damage text on boss and ranking text in center of screen
+	// play a nice ding sound when colliding with note
 	void OnCollisionStay2D(Collision2D coll) {
 		if (coll.gameObject.tag == "Note") {
 			//bad above
 			if ((coll.gameObject.transform.position.y >= -3.75f && coll.gameObject.transform.position.y < -3.0f) && hit) {
-				Debug.Log ("Bad");
-				particles.Play ();
-				audioSource.PlayOneShot (audioClip1);
+				particles.Play (); //particle
+				audioSource.PlayOneShot (audioClip1); //audio
 				GameManager.combo = 0;
 				GameManager.score += 5;
 				GameManager.bossCurrHealth -= 5;
-				badGoodPerfectText.GetComponent<Text> ().text = "";
+				//set boss color to the button's color
 				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
 				if (GameManager.bossCurrHealth > 0) {
 					DamageTextController.CreateDamageText ("5", 3);
@@ -90,13 +88,12 @@ public class ButtonThree : MonoBehaviour {
 			}
 			//great above
 			else if ((coll.gameObject.transform.position.y >= -3.95f && coll.gameObject.transform.position.y < -3.75f) && hit) {
-				Debug.Log ("Great");
-				particles.Play ();
-				audioSource.PlayOneShot (audioClip1);
+				particles.Play (); //particle
+				audioSource.PlayOneShot (audioClip1); //audio
 				GameManager.combo += 1;
 				GameManager.score += 10;
 				GameManager.bossCurrHealth -= 10;
-				badGoodPerfectText.GetComponent<Text> ().text = "";
+				//set boss color to the button's color
 				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
 				if (GameManager.bossCurrHealth > 0) {
 					DamageTextController.CreateDamageText ("10", 3);
@@ -110,13 +107,12 @@ public class ButtonThree : MonoBehaviour {
 			}
 			//perfect
 			else if (coll.gameObject.transform.position.y >= -4.05f && coll.gameObject.transform.position.y < -3.95f && hit) {
-				Debug.Log ("Perfect");
-				particles.Play ();
-				audioSource.PlayOneShot (audioClip1);
+				particles.Play (); //particle
+				audioSource.PlayOneShot (audioClip1); //audio
 				GameManager.combo += 1;
 				GameManager.score += 20;
 				GameManager.bossCurrHealth -= 20;
-				badGoodPerfectText.GetComponent<Text> ().text = "";
+				//set boss color to the button's color
 				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
 				if (GameManager.bossCurrHealth > 0) {
 					DamageTextController.CreateDamageText ("20", 3);
@@ -130,13 +126,12 @@ public class ButtonThree : MonoBehaviour {
 			}
 			//great below
 			else if ((coll.gameObject.transform.position.y >= -4.25f && coll.gameObject.transform.position.y < -4.05f) && hit) {
-				Debug.Log ("Great");
-				particles.Play ();
-				audioSource.PlayOneShot (audioClip1);
+				particles.Play (); //particle
+				audioSource.PlayOneShot (audioClip1); //audio
 				GameManager.combo += 1;
 				GameManager.score += 10;
 				GameManager.bossCurrHealth -= 10;
-				badGoodPerfectText.GetComponent<Text> ().text = "";
+				//set boss color to the button's color
 				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
 				if (GameManager.bossCurrHealth > 0) {
 					DamageTextController.CreateDamageText ("10", 3);
@@ -150,13 +145,12 @@ public class ButtonThree : MonoBehaviour {
 			} 
 			//bad below
 			else if ((coll.gameObject.transform.position.y > -5.0f && coll.gameObject.transform.position.y < -4.25f) && hit) {
-				Debug.Log ("Bad");
-				particles.Play ();
-				audioSource.PlayOneShot (audioClip1);
+				particles.Play (); //particle
+				audioSource.PlayOneShot (audioClip1); //audio
 				GameManager.combo = 0;
 				GameManager.score += 5;
 				GameManager.bossCurrHealth -= 5;
-				badGoodPerfectText.GetComponent<Text> ().text = "";
+				//set boss color to the button's color
 				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
 				if (GameManager.bossCurrHealth > 0) {
 					DamageTextController.CreateDamageText ("5", 3);
