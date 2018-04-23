@@ -51,15 +51,15 @@ public class GameManager : MonoBehaviour {
 		DamageTextController.Initialize ();
 		RankingTextController.Initialize ();
 
-		//if number is 1, set the playerhealth and bosshealth to 100 and 150 respectively
+		//if number is 1, set the playerhealth and bosshealth to 100 and 250 respectively
 		if (fileNumber == 1) {
 			bossFullHealth = 250; //set bossHealth to 150
 			playerFullHealth = 100; //set playerHealth to 100
 		}
 
-		//if number is 2, set the playerhealth and bosshealth to 300 and 100 respectively
+		//if number is 2, set the playerhealth and bosshealth to 100 and 400 respectively
 		if (fileNumber == 2) {
-			bossFullHealth = 300;
+			bossFullHealth = 400;
 			playerFullHealth = 100;
 		}
 
