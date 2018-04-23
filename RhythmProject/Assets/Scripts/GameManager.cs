@@ -6,7 +6,9 @@ using UnityEngine.UI;
 
 /*
  * GameManager class
- * - Manages the current score, the combo count, the text health of boss and player
+ * - Manages the current score, the combo count, the health of boss and player
+ * - also manages the total bad, great, perfect, the bonus the file number and if the
+ * - first boss condition is fulfilled 
  * - resets the score, count, and text health when loaded
  * 
  * */
@@ -45,9 +47,9 @@ public class GameManager : MonoBehaviour {
 		
 	// Use this for initialization
 	void Start () {
+		//initialize the prefabs for the animation texts
 		DamageTextController.Initialize ();
 		RankingTextController.Initialize ();
-		biggestCombo = 0;
 
 		//if number is 1, set the playerhealth and bosshealth to 100 and 150 respectively
 		if (fileNumber == 1) {
@@ -55,7 +57,7 @@ public class GameManager : MonoBehaviour {
 			playerFullHealth = 100; //set playerHealth to 100
 		}
 
-//		Potential future implementation
+		//if number is 2, set the playerhealth and bosshealth to 300 and 100 respectively
 		if (fileNumber == 2) {
 			bossFullHealth = 300;
 			playerFullHealth = 100;
@@ -64,6 +66,7 @@ public class GameManager : MonoBehaviour {
 		//set the current health to full health
 		bossCurrHealth = bossFullHealth;
 		playerCurrHealth = playerFullHealth;
+		//set the bonus text to be orange-ish
 		bonusText.GetComponent<Text> ().color = new Color (1, 0.517f, 0, 0);
 		Reset (); //reset all variables and text
 	}
@@ -71,6 +74,7 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (comboText != null) {
+			//check if the combo is bigger than the current combo to get the max combo count
 			if (combo > biggestCombo) {
 				biggestCombo = combo;
 			}
@@ -93,7 +97,7 @@ public class GameManager : MonoBehaviour {
 				Color c = bonusText.GetComponent<Text>().color;
 				c.a += 0.01f;
 				bonusText.GetComponent<Text>().color = c;
-				slayedFirstBoss = true;
+				slayedFirstBoss = true; //one of the condition is fulfilled 
 			}
 		}
 

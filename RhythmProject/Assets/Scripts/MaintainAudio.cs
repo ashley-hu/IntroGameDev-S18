@@ -4,8 +4,9 @@ using UnityEngine;
 
 /*
  * MaintainAudio class  
- * Continues to play music in background when transitioning
- * between scenes 
+ * - Continues to play music in background when transitioning
+ * - between scenes 
+ * 
 */
 
 public class MaintainAudio : MonoBehaviour {
@@ -30,15 +31,5 @@ public class MaintainAudio : MonoBehaviour {
 	//Play music 
 	public void playbackgroundMusic() {
 		background.Play ();
-	}
-
-	// Use this for initialization
-	void Start () {
-
-	}
-
-	// Update is called once per frame
-	void Update () {
-
 	}
 }

@@ -4,8 +4,10 @@ using UnityEngine;
 
 /*
  * DamageTextController class
+ * - controller for animation damage to boss 
  * - instantiates proper prefab
  * - set position relative to the boss
+ * - sets text using method from DamageText class
  * 
  * Received help from youtube tutorial: https://www.youtube.com/watch?v=fbUOG7f3jq8 
  * */
@@ -53,13 +55,10 @@ public class DamageTextController : MonoBehaviour{
 		if (bossParent == null) {
 			bossParent = GameObject.FindWithTag ("BossParent");
 		}
-		//Debug.Log (bossParent);
 		//Set parent to Boss Image
 		instance.transform.SetParent (bossParent.transform, false);
 		//Move the text slightly higher and to the right relative to parent
 		instance.transform.position = bossParent.transform.position;
-		//Debug.Log ("Boss pArent position " + bossParent.transform.position);
-		//Debug.Log ("Instance " + instance.transform.position);
 		//set the text
 		instance.SetText (txt);
 	}

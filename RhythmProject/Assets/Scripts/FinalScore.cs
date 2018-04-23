@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * FinalScore class
+ * - shows the scores when the game is over
+ * - scores include combo, letter score, number score, number of bad, great, miss and perfect
+ * - text description is also shown
+ * - text describes if you slain the dragon, if you died, or if you failed to slay the dragon
+ * - letter score is calculated here
+ *
+ * */
 public class FinalScore : MonoBehaviour {
-
-	//Show the scores when the game is over
-	//Scores include combo, letter score, number score, number of bad, great, miss and perfect
-
-	//30 notes 
-	//max score u can get ( 30 * 20 = 600) 
 
 	private GameObject letterScore;
 	private GameObject maxCombo;
@@ -35,6 +38,7 @@ public class FinalScore : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		//letter score is determined by the value of your score
 		if (letterScore != null) {
 			if (GameManager.score >= 600) {
 				finalScore = "SSS";
@@ -90,6 +94,7 @@ public class FinalScore : MonoBehaviour {
 			numOfPerf.GetComponent<Text> ().text = "Perfect: " + GameManager.totalPerfect;
 		}
 
+		//Checks if player slain the dragon with full healh or died
 		if (textDescription != null) {
 			if (GameManager.playerCurrHealth > 0) {
 				if (GameManager.bossCurrHealth <= 0) {

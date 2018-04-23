@@ -6,8 +6,9 @@ using UnityEngine.UI;
 /*
  * DamageText class
  * - get current clip from animator
- * - destory when animation is done
+ * - destroy when animation is done
  * - set the text for animation
+ * - DamageTextController class uses this
  * 
  * Received some help from youtube tutorial: https://www.youtube.com/watch?v=fbUOG7f3jq8
  * */

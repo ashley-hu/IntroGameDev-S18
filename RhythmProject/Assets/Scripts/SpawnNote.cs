@@ -9,9 +9,10 @@ using UnityEngine.SceneManagement;
  * SpawnNote class
  * - handles parsing text file to create note
  * - signals when notes should come down and at what speed they should be moving at
- * - handles which resources should be loaded (Potential future implementation for more songs) 
+ * - handles which resources should be loaded
  * - determine the boss damage
  * - move to GameOver screen when song is done playing
+ * 
  * */
 public class SpawnNote : MonoBehaviour {
 
@@ -58,12 +59,6 @@ public class SpawnNote : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//lanes 
-//		arrayOfColumn [0] = -1.7f; //red lane
-//		arrayOfColumn [1] = -0.565f; //blue lane
-//		arrayOfColumn [2] = 0.565f; //yellow lane
-//		arrayOfColumn [3] = 1.7f; //green lane
-
 		//if filenumber is selected to be 1 from the GameManager 
 		if (GameManager.fileNumber == 1) {
 			//load the appropriate resources
@@ -73,12 +68,10 @@ public class SpawnNote : MonoBehaviour {
 			bossHealthBar.maxValue = GameManager.bossFullHealth;
 			bossHealthBar.value = GameManager.bossFullHealth;
 			playerHealthBar.value = GameManager.playerFullHealth;
-			//alphaLevel = 0;
 		}
-
-//		Potential future implementation of 2nd song		
+			
+		//load appropriate resources if filenumber is 2
 		if (GameManager.fileNumber == 2) {
-			Debug.Log ("Load 2nd files");
 			songData = Resources.Load ("songTwo") as TextAsset; 
 			songOne = Resources.Load<AudioClip> ("demo-3");
 			//set the sliders to the health of boss and player from GameManager
@@ -121,31 +114,25 @@ public class SpawnNote : MonoBehaviour {
 				if (rows [a].Contains ("1")) { //if it contain one, it has a note
 					hasValue = true;
 					//instantiate the note prefab at the proper column
-					//GameObject newNote = Instantiate (note, new Vector3 (arrayOfColumn [a], 5.5f, 0), transform.rotation);
 					GameObject newNote = Instantiate (note, new Vector3 (-3.05f, spawnHeight, 0), transform.rotation);
 					newNote.GetComponent<Note> ().move = false; //set move to false 
-					newNote.GetComponent<Note>().column = a;
-
+					newNote.GetComponent<Note>().column = a; //set the column to which it will spawn
 					if (a == 0) {
 						newNote.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 0); //if column is 0, set note color to red
-						//newNote.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0);
-						newNote.GetComponent<Note>().destinationColumn = -1.7f;
-						newNote.GetComponent<Transform> ().localScale = new Vector3 (0.1f, 0.1f, 0.1f);
+						newNote.GetComponent<Note>().destinationColumn = -1.7f; //set the destination column
+						newNote.GetComponent<Transform> ().localScale = new Vector3 (0.1f, 0.1f, 0.1f); //set the size to be small
 					} else if (a == 1) {
 						newNote.GetComponent<SpriteRenderer>().color = new Color(0, 0, 1, 0); //if column is 1, set note color to blue
-						//newNote.GetComponent<SpriteRenderer>().color = new Color(0, 0, 1); 
-						newNote.GetComponent<Note>().destinationColumn = -0.565f;
-						newNote.GetComponent<Transform> ().localScale = new Vector3 (0.1f, 0.1f, 0.1f);
+						newNote.GetComponent<Note>().destinationColumn = -0.565f; //set the destination column
+						newNote.GetComponent<Transform> ().localScale = new Vector3 (0.1f, 0.1f, 0.1f); //set the size to be small
 					} else if (a == 2) {
-						//newNote.GetComponent<SpriteRenderer>().color = new Color(1, 0.92f, 0.016f); 
-						newNote.GetComponent<SpriteRenderer>().color = new Color(1, 0.92f, 0.016f, 0);; //if column is 2, set note color to yellow
-						newNote.GetComponent<Note>().destinationColumn = 0.565f;
-						newNote.GetComponent<Transform> ().localScale = new Vector3 (0.1f, 0.1f, 0.1f);
+						newNote.GetComponent<SpriteRenderer>().color = new Color(1, 0.92f, 0.016f, 0); //if column is 2, set note color to yellow
+						newNote.GetComponent<Note>().destinationColumn = 0.565f; //set the destination column
+						newNote.GetComponent<Transform> ().localScale = new Vector3 (0.1f, 0.1f, 0.1f); //set the size to be small
 					} else {
-						//newNote.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0);
 						newNote.GetComponent<SpriteRenderer>().color = new Color(0, 1, 0, 0); //else, set note color to green
-						newNote.GetComponent<Note>().destinationColumn = 1.7f;
-						newNote.GetComponent<Transform> ().localScale = new Vector3 (0.1f, 0.1f, 0.1f);
+						newNote.GetComponent<Note>().destinationColumn = 1.7f; //set the destination column
+						newNote.GetComponent<Transform> ().localScale = new Vector3 (0.1f, 0.1f, 0.1f); //set the size to be small
 					}
 					arrayOfNotes.Add (newNote); //add note to list 
 				}
@@ -162,11 +149,12 @@ public class SpawnNote : MonoBehaviour {
 		if (startSpawning){
 			StartSpawn(); //spawn the notes out of the dragon's mouth
 		}
+		//determine the position in the song
 		songPosition = (float)(AudioSettings.dspTime - initTime - 2.0f);
 		if (songPosition > currentBeat + timeDurationOfBeat) {
 			if (arrayOfMeasures.Count > 0) {
-				List<GameObject> result = arrayOfMeasures [arrayOfMeasures.Count - 1];
-				for (int i = 0; i < result.Count; i++) {
+				List<GameObject> result = arrayOfMeasures [arrayOfMeasures.Count - 1]; //get the next note
+				for (int i = 0; i < result.Count; i++) { //move the note after every certain beat 
 					if (result [i].gameObject != null) {
 						if (result [i].GetComponent<Note> () != null) {
 							result [i].GetComponent<Note> ().move = true;
@@ -177,13 +165,13 @@ public class SpawnNote : MonoBehaviour {
 			} else {
 				endOfSong = true;
 			}
-			currentBeat += timeDurationOfBeat;
+			currentBeat += timeDurationOfBeat; //increment beat to determine next beat
 		}
 		if (hasSpawned) {
 			arrayOfMeasures.Remove (arrayOfMeasures [arrayOfMeasures.Count - 1]); //remove the notes from the array
 			hasSpawned = false;
 		}
-		if (!songSource.isPlaying && endOfSong) {
+		if (!songSource.isPlaying && endOfSong) { //if end of song is reached and song is done playing
 			if (SceneManager.GetActiveScene ().buildIndex == 2) {
 				endOfSong = false;
 				SceneManager.LoadScene ("GameOver"); //load the game over scene when song is done playing
@@ -198,45 +186,26 @@ public class SpawnNote : MonoBehaviour {
 			for (int k = 0; k < arrayOfMeasures [i].Count; k++) {
 				if ( arrayOfMeasures [i] [k].gameObject != null) {
 					if (arrayOfMeasures [i] [k].GetComponent<Note> () != null) {
+						//move to position
 						if (arrayOfMeasures [i] [k].GetComponent<Note> ().transform.position.x <= arrayOfMeasures [i][k].GetComponent<Note> ().destinationColumn) {
 							arrayOfMeasures [i][k].GetComponent<Note> ().transform.position = 
 								Vector3.MoveTowards(arrayOfMeasures [i][k].GetComponent<Note> ().transform.position, new Vector3(arrayOfMeasures [i][k].GetComponent<Note> ().destinationColumn,2.6f,0), Time.deltaTime * speed * 1.5f);
 						}
+						//change alpha
 						if (arrayOfMeasures [i] [k].GetComponent<Note> ().GetComponent<SpriteRenderer> ().color.a < 1) {
 							Color c = arrayOfMeasures [i] [k].GetComponent<Note> ().GetComponent<SpriteRenderer> ().color;
 							c.a += 0.01f;
 							arrayOfMeasures [i] [k].GetComponent<Note> ().GetComponent<SpriteRenderer> ().color = c;
 						}
+						//increase in size
 						if (arrayOfMeasures [i] [k].GetComponent<Note> ().GetComponent<Transform> ().localScale.x <= 1 &&
 							arrayOfMeasures [i] [k].GetComponent<Note> ().GetComponent<Transform> ().localScale.y <= 1 &&
 							arrayOfMeasures [i] [k].GetComponent<Note> ().GetComponent<Transform> ().localScale.z <= 1) {
-
 							arrayOfMeasures [i] [k].GetComponent<Note> ().GetComponent<Transform> ().localScale += new Vector3(0.01F, 0.01F, 0.01F);
 						}
-
 					}
 				}
-
 			}
 		}
-
-//		if (arrayOfMeasures.Count > 0) {
-//				for (int i = 0; i < result.Count; i++) {
-//					Debug.Log ("result " + result.Count);
-//					//for (int i = 0; i < result.Count; i++) {
-//					Debug.Log ("i : " + i);
-//					if (result [i].gameObject != null) {
-//						if (result [i].GetComponent<Note> () != null) {
-//							if (result [i].GetComponent<Note> ().transform.position.x <= result [i].GetComponent<Note> ().destinationColumn) {
-//								Debug.Log ("POSition " + result [i].GetComponent<Note> ().transform.position);
-//								Debug.Log ("Second Pos: " + result [i].GetComponent<Note> ().destinationColumn);
-//								result [i].GetComponent<Note> ().transform.position += transform.right * Time.deltaTime * SpawnNote.speed * 2;
-//								//Debug.Log(result[i].GetComponent<Note>().transform.position);
-//								//continue;
-//							}
-//						}
-//					}
-//			}
-		}
-//	}
+	}
 }

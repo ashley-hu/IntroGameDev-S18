@@ -8,6 +8,7 @@ using UnityEngine.UI;
  * - have the note move down the screen
  * - if it has not been hit and passed below -5, is is considered a miss and destroyed
  * - if missed, bottom half of screen will flash red, and player will lose health based on boss damage in SpawnNote
+ * 
  * */
 public class Note : MonoBehaviour {
 
@@ -18,8 +19,6 @@ public class Note : MonoBehaviour {
 	private Image damageImage;
 	public float destinationColumn;
 	public static float missCounter;
-
-	//screenshake:
 
 	// Use this for initialization
 	void Start () {
@@ -34,7 +33,6 @@ public class Note : MonoBehaviour {
 	void Update () {
 		if (move) { //If note is true, it will move down the screen at a particular speed 
 			transform.position -= transform.up * Time.deltaTime * SpawnNote.speed;
-
 			if (transform.position.y < -5.0f) {
 				damageImage.color = new Color (1f, 0f, 0f, 0.8f); //image color is set to red
 				GameManager.combo = 0;
@@ -45,9 +43,6 @@ public class Note : MonoBehaviour {
 					healthSlider.GetComponent<Slider> ().value -= SpawnNote.bossDamage; //subtract health from damage
 				}
 				Destroy (gameObject); //destroy the game object 
-
-				//Camera.main.GetComponent<scriptname>().publicshaketimer = however long you want itar Touch shake
-			//	Camera.main.transform.position = Camera.main.transform.position - Random.insideUnitCircle;
 			} else {
 				//clear the image color 
 				damageImage.color = Color.Lerp (damageImage.color, Color.clear, 20 * Time.deltaTime);
