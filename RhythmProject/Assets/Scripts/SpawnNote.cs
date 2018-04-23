@@ -20,8 +20,6 @@ public class SpawnNote : MonoBehaviour {
 	public GameObject note;
 	//List of game object lists for spawn of notes
 	private List<List<GameObject>> arrayOfMeasures = new List<List<GameObject>>();
-	//lanes for the notes to fall down 
-	private float[] arrayOfColumn = new float[4];
 
 	private AudioClip songOne;
 	private TextAsset songData;
@@ -54,7 +52,6 @@ public class SpawnNote : MonoBehaviour {
 	//get audio source component
 	void Awake() {
 		songSource = GetComponent<AudioSource>();
-		fireAnimationClip = GetComponent<Animator> ();
 	}
 
 	// Use this for initialization

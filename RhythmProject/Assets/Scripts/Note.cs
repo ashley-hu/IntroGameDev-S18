@@ -14,7 +14,6 @@ public class Note : MonoBehaviour {
 
 	public bool move;
 	public float column;
-	private GameObject missText;
 	private GameObject healthSlider;
 	private Image damageImage;
 	public float destinationColumn;
@@ -23,7 +22,6 @@ public class Note : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		move = false; //initially set to false, will be set to true in SpawnNote 
-		missText = GameObject.FindWithTag ("BadGoodPerfect");
 		healthSlider = GameObject.FindWithTag ("PlayerHealthBar");
 		damageImage = GameObject.FindWithTag ("DamageImage").GetComponent<Image>();
 		missCounter = 0;
