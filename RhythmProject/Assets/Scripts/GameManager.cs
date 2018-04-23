@@ -97,7 +97,11 @@ public class GameManager : MonoBehaviour {
 				Color c = bonusText.GetComponent<Text>().color;
 				c.a += 0.01f;
 				bonusText.GetComponent<Text>().color = c;
-				slayedFirstBoss = true; //one of the condition is fulfilled 
+				if (playerCurrHealth > 0) {
+					slayedFirstBoss = true; //one of the condition is fulfilled 
+				} else {
+					slayedFirstBoss = false;
+				}
 			}
 		}
 

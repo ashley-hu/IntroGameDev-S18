@@ -34,7 +34,12 @@ public class SongSelection : MonoBehaviour {
 	public void Update(){
 		//check if player has cleared condition for second song 
 		if (secondSongButton != null) {
-			if (secondSongButton.interactable == false && GameManager.slayedFirstBoss) {
+			if (GameManager.fileNumber != 2) {
+				if (secondSongButton.interactable == false && GameManager.slayedFirstBoss) {
+					secondSongButton.interactable = true; //make button interactable
+					Destroy (songTwoDescText); //destroy the text object 
+				}
+			} else {
 				secondSongButton.interactable = true; //make button interactable
 				Destroy (songTwoDescText); //destroy the text object 
 			}
