@@ -25,6 +25,7 @@ public class ButtonThree : MonoBehaviour {
 	public AudioClip audioClip1;
 	public AudioClip audioClip2;
 	private AudioSource audioSource;
+	private bool noteCollided;
 
 	// Use this for initialization
 	void Start () {
@@ -32,6 +33,7 @@ public class ButtonThree : MonoBehaviour {
 			buttonB = GameObject.FindWithTag ("B");
 		}
 		hit = false;
+		noteCollided = false;
 		enemyHealth = GameObject.FindWithTag ("Health");
 		bossIm = GameObject.FindWithTag ("BossParent").GetComponent<Image>();
 		audioSource = GetComponent<AudioSource> ();
@@ -44,12 +46,16 @@ public class ButtonThree : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.B)) {
 			buttonB.GetComponent<SpriteRenderer> ().color = new Color (1.0f, 0.92f, 0.016f, 0.3f);
 			hit = true;
-			audioSource.PlayOneShot (audioClip2);
+			if (!noteCollided) {
+				audioSource.PlayOneShot (audioClip2);
+				noteCollided = false;
+			}
 		}
 		//if key is up, set alpha back to solid color
 		if (Input.GetKeyUp (KeyCode.B)) {
 			buttonB.GetComponent<SpriteRenderer> ().color = Color.yellow;
 			hit = false;
+			noteCollided = false;
 		}
 		//lerp the boss color from the damaged color back to original white color
 		bossIm.color = Color.Lerp (bossIm.color, Color.white, Time.deltaTime * 0.7f);
@@ -67,6 +73,7 @@ public class ButtonThree : MonoBehaviour {
 	// play a nice ding sound when colliding with note
 	void OnCollisionStay2D(Collision2D coll) {
 		if (coll.gameObject.tag == "Note") {
+			noteCollided = true;
 			//bad above
 			if ((coll.gameObject.transform.position.y >= -3.75f && coll.gameObject.transform.position.y < -3.0f) && hit) {
 				particles.Play (); //particle
