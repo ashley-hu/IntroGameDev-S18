@@ -94,7 +94,6 @@ public class GameManager : MonoBehaviour {
 				c.a += 0.01f;
 				bonusText.GetComponent<Text>().color = c;
 				slayedFirstBoss = true;
-				Debug.Log ("Slayed: " + slayedFirstBoss);
 			}
 		}
 

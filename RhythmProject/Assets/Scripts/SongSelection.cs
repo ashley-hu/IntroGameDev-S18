@@ -31,7 +31,6 @@ public class SongSelection : MonoBehaviour {
 
 	public void Update(){
 		if (secondSongButton != null && GameManager.slayedFirstBoss != null) {
-			Debug.Log("Hmm: " +GameManager.slayedFirstBoss);
 			if (secondSongButton.interactable == false && GameManager.slayedFirstBoss) {
 				secondSongButton.interactable = true;
 				Destroy (songTwoDescText);

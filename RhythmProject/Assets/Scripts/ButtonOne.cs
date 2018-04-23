@@ -6,17 +6,18 @@ using UnityEngine.UI;
 /*
  * ButtonOne class
  * - button is C
- * - get the rating (Bad, Good, Perfect) when button is pressed
+ * - get the rating (Bad, Great, Perfect) when button is pressed
  * - decrease boss health
  * - increase combo
  * - increase score
  * - create text animation for rating
+ * - play sound when hitting and not hitting note 
  * 
  * */
 public class ButtonOne : MonoBehaviour {
 
+	//declare variables
 	public ParticleSystem particles;
-
 	private GameObject buttonC;
 	private GameObject enemyHealth;
 	private GameObject badGoodPerfectText;
@@ -40,35 +41,35 @@ public class ButtonOne : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//if key is pressed, change the alpha to signal difference 
+		//if key is pressed, change the alpha to signal difference
+		//play a dull sound if note is pressed without hitting anything
 		if (Input.GetKeyDown (KeyCode.C)) {
 			buttonC.GetComponent<SpriteRenderer> ().color = new Color(1.0F, 0, 0, 0.5F);
 			hit = true;
 			audioSource.PlayOneShot (audioClip2);
 		}
-		//if key is up, set solid color
+		//if key is up, set alpha back to solid color
 		if (Input.GetKeyUp (KeyCode.C)) {
 			buttonC.GetComponent<SpriteRenderer> ().color = Color.red;
 			hit = false;
-			//anim.SetBool ("firstButtonPressed", false);
 		}
+		//lerp the boss color from the damaged color back to original white color
 		bossIm.color = Color.Lerp (bossIm.color, Color.white, Time.deltaTime * 0.7f);
 	}
 
-	//checks for collision with falling note 
-	//if note is hit within a certain distance, a different rating will appear
-	//combo, score, and boss' current health is determined here 
+	// checks for collision with falling note 
+	// if note is hit within a certain distance, a different rating will appear
+	// combo, score, and boss' current health is determined here 
 	// bad gets a score of +5 and -5 for boss health
-	// great gets a score of +10 and =10 for boss health
+	// great gets a score of +10 and -10 for boss health
 	// perfect gets a score of +20 and -20 for boss health
-	//after note is hit, it is destroyed 
+	// after note is hit, it is destroyed 
 	// create a particle effect when note collides
 	// show Damage text on boss and ranking text in center of screen
 	void OnCollisionStay2D(Collision2D coll) {
 		if (coll.gameObject.tag == "Note") {
 			//bad above
 			if ((coll.gameObject.transform.position.y >= -3.75f && coll.gameObject.transform.position.y < -3.0f) && hit) {
-				Debug.Log ("Bad");
 				particles.Play ();
 				audioSource.PlayOneShot (audioClip1);
 				GameManager.combo = 0;
@@ -80,7 +81,6 @@ public class ButtonOne : MonoBehaviour {
 					DamageTextController.CreateDamageText ("5", 1);
 				}
 				RankingTextController.CreateDamageText ("BAD", 1);
-
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 5;
 				}
@@ -89,7 +89,6 @@ public class ButtonOne : MonoBehaviour {
 			}
 			//great above
 			else if ((coll.gameObject.transform.position.y >= -3.95f && coll.gameObject.transform.position.y < -3.75f) && hit) {
-				Debug.Log ("Great");
 				particles.Play ();
 				audioSource.PlayOneShot (audioClip1);
 				GameManager.combo += 1;
@@ -102,7 +101,6 @@ public class ButtonOne : MonoBehaviour {
 					DamageTextController.CreateDamageText ("10", 1);
 				}
 				RankingTextController.CreateDamageText ("GREAT", 1);
-
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 10;
 				}
@@ -111,7 +109,6 @@ public class ButtonOne : MonoBehaviour {
 			}
 			//perfect
 			else if (coll.gameObject.transform.position.y >= -4.05f && coll.gameObject.transform.position.y < -3.95f && hit) {
-				Debug.Log ("Perfect");
 				particles.Play ();
 				audioSource.PlayOneShot (audioClip1);
 				GameManager.combo += 1;
@@ -124,7 +121,6 @@ public class ButtonOne : MonoBehaviour {
 					DamageTextController.CreateDamageText ("20", 1);
 				}
 				RankingTextController.CreateDamageText ("PERFECT", 1);
-
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 20;
 				}
@@ -133,7 +129,6 @@ public class ButtonOne : MonoBehaviour {
 			}
 			//great below
 			else if ((coll.gameObject.transform.position.y >= -4.25f && coll.gameObject.transform.position.y < -4.05f) && hit) {
-				Debug.Log ("Great");
 				particles.Play ();
 				audioSource.PlayOneShot (audioClip1);
 				GameManager.combo += 1;
@@ -145,7 +140,6 @@ public class ButtonOne : MonoBehaviour {
 					DamageTextController.CreateDamageText ("10", 1);
 				}
 				RankingTextController.CreateDamageText ("GREAT", 1);
-
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 10;
 				}
@@ -154,20 +148,17 @@ public class ButtonOne : MonoBehaviour {
 			} 
 			//bad below
 			else if ((coll.gameObject.transform.position.y > -5.0f && coll.gameObject.transform.position.y < -4.25f) && hit) {
-				Debug.Log ("Bad");
 				particles.Play ();
-
+				audioSource.PlayOneShot (audioClip1);
 				GameManager.combo = 0;
 				GameManager.score += 5;
 				GameManager.bossCurrHealth -= 5;
 				badGoodPerfectText.GetComponent<Text> ().text = "";
 				bossIm.color = coll.gameObject.GetComponent<SpriteRenderer> ().color;
-				//bossIm.color = new Color(1, 0, 0);
 				if (GameManager.bossCurrHealth > 0) {
 					DamageTextController.CreateDamageText ("5", 1);
 				}
 				RankingTextController.CreateDamageText ("BAD", 1);
-
 				if (enemyHealth.GetComponent<Slider> ().value > 0) {
 					enemyHealth.GetComponent<Slider> ().value -= 5;
 				}

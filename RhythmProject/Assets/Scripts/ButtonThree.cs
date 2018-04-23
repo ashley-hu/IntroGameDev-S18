@@ -11,12 +11,13 @@ using UnityEngine.UI;
  * - increase combo
  * - increase score
  * - create text animation for rating
+ * - play sound when hitting and not hitting note
  * 
  * */
 public class ButtonThree : MonoBehaviour {
 
+	//declare variables
 	public ParticleSystem particles;
-
 	private GameObject buttonB;
 	private GameObject enemyHealth;
 	private bool hit;
@@ -40,27 +41,29 @@ public class ButtonThree : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//if key is pressed, change the alpha to signal difference 
+		//if key is pressed, change the alpha to signal difference
+		//play a dull sound if note is pressed without hitting anything
 		if (Input.GetKeyDown (KeyCode.B)) {
 			buttonB.GetComponent<SpriteRenderer> ().color = new Color (1.0f, 0.92f, 0.016f, 0.3f);
 			hit = true;
 			audioSource.PlayOneShot (audioClip2);
 		}
-		//if key is up, set solid color
+		//if key is up, set alpha back to solid color
 		if (Input.GetKeyUp (KeyCode.B)) {
 			buttonB.GetComponent<SpriteRenderer> ().color = Color.yellow;
 			hit = false;
 		}
+		//lerp the boss color from the damaged color back to original white color
 		bossIm.color = Color.Lerp (bossIm.color, Color.white, Time.deltaTime * 0.7f);
 	}
 
-	//checks for collision with falling note 
-	//if note is hit within a certain distance, a different rating will appear
-	//combo, score, and boss' current health is determined here 
+	// checks for collision with falling note 
+	// if note is hit within a certain distance, a different rating will appear
+	// combo, score, and boss' current health is determined here 
 	// bad gets a score of +5 and -5 for boss health
-	// great gets a score of +10 and =10 for boss health
+	// great gets a score of +10 and -10 for boss health
 	// perfect gets a score of +20 and -20 for boss health
-	//after note is hit, it is destroyed 
+	// after note is hit, it is destroyed 
 	// create a particle effect when note collides
 	// show Damage text on boss and ranking text in center of screen
 	void OnCollisionStay2D(Collision2D coll) {
